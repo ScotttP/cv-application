@@ -14,9 +14,9 @@ export default class GeneralInformation extends React.Component {
 				<h3>419-450-2549</h3>
 				<div id="professionalContactContainer">
 					<ul id="listContainer">
-						<li>linkedIn</li>
-						<li>Github</li>
-						<li>Email</li>
+						<li>linkedIn (icons)</li>
+						<li>Github (icons)</li>
+						<li>Email (icons)</li>
 					</ul>
 				</div>
 			</aside>
