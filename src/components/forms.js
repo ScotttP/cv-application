@@ -9,6 +9,7 @@ export default class JobForm extends React.Component {
 			startDate: "",
 			endDate: "",
 			tasks: "",
+			form: true,
 		};
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -20,9 +21,10 @@ export default class JobForm extends React.Component {
 	deleteJob() {
 		console.log("delete this current job!");
 	}
+
 	render() {
 		return (
-			<div id="job">
+			<div id={this.props.id}>
 				<label>
 					Company Name:
 					<input

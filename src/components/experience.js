@@ -7,30 +7,36 @@ export default class Experience extends React.Component {
 		this.state = {
 			jobFormsArray: [<JobForm />],
 		};
-		this.handleAddJob = this.handleAddJob.bind(this);
+		this.addJob = this.addJob.bind(this);
 	}
 
-	handleAddJob() {
+	addJob() {
 		this.setState({
 			jobFormsArray: [...this.state.jobFormsArray, <JobForm />],
 		});
 	}
 
+	handleSubmit(e) {
+		e.preventDefault();
+	}
+
 	render() {
+		let form = this.state.jobFormsArray.map((job, i) => (
+			<JobForm id={job.toString() + i} key={job + i} />
+		)); // need to figure out a way to toggle between form view and display view.
+		//maybe control the state here and pass props down to job form?
 		return (
 			<main>
 				<h1>
 					<u>Experience</u>
 				</h1>
 				<button>Edit</button>
-				<form id="experienceForm">
-					{this.state.jobFormsArray.map((job, i) => (
-						<JobForm key={job + i} />
-					))}
+				<form id="experienceForm" onSubmit={this.handleSubmit}>
+					{form}
 					<input type="submit" value="Submit"></input>
 				</form>
 
-				<button onClick={this.handleAddJob} id="addJob">
+				<button onClick={this.addJob} id="addJob">
 					+
 				</button>
 			</main>
