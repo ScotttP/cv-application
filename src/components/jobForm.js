@@ -1,28 +1,11 @@
 import React from "react";
 export default class JobForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			companyName: "",
-			location: "",
-			roleTitle: "",
-			startDate: "",
-			endDate: "",
-			tasks: "",
-			form: true,
-		};
-		this.handleChange = this.handleChange.bind(this);
-	}
-	handleChange(e) {
-		this.setState({
-			[e.target.name]: e.target.value,
-		});
-	}
 	deleteJob() {
 		console.log("delete this current job!");
 	}
 
 	render() {
+		console.log(this.props.jobInfo.companyName);
 		return (
 			<div id={this.props.id}>
 				<label>
@@ -30,8 +13,8 @@ export default class JobForm extends React.Component {
 					<input
 						name="companyName"
 						type="text"
-						value={this.state.companyName}
-						onChange={this.handleChange}
+						value={this.props.jobInfo.companyName}
+						onChange={this.props.onChange}
 						placeholder="ABC Company"
 					></input>
 				</label>
@@ -40,7 +23,7 @@ export default class JobForm extends React.Component {
 					<input
 						name="location"
 						type="text"
-						value={this.state.location}
+						value={this.props.jobInfo.location}
 						onChange={this.handleChange}
 						placeholder="New York City, NY"
 					></input>
@@ -50,7 +33,7 @@ export default class JobForm extends React.Component {
 					<input
 						name="roleTitle"
 						type="text"
-						value={this.state.roleTitle}
+						value={this.props.jobInfo.roleTitle}
 						onChange={this.handleChange}
 						placeholder="Software Developer"
 					></input>
@@ -60,14 +43,14 @@ export default class JobForm extends React.Component {
 					<input
 						name="startDate"
 						type="Date"
-						value={this.state.startDate}
+						value={this.props.jobInfo.startDate}
 						onChange={this.handleChange}
 					></input>
 					End Date:
 					<input
 						name="endDate"
 						type="Date"
-						value={this.state.endDate}
+						value={this.props.jobInfo.endDate}
 						onChange={this.handleChange}
 					></input>
 				</label>
@@ -76,7 +59,7 @@ export default class JobForm extends React.Component {
 					<textarea
 						name="tasks"
 						type="text"
-						value={this.state.tasks}
+						value={this.props.jobInfo.tasks}
 						onChange={this.handleChange}
 						placeholder="Enter Tasks Here"
 					></textarea>

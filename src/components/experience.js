@@ -1,5 +1,6 @@
 import React from "react";
-import JobForm from "./forms";
+import JobForm from "./jobForm";
+import JobDisplay from "./jobDisplay";
 
 export default class Experience extends React.Component {
 	constructor(props) {
@@ -7,13 +8,25 @@ export default class Experience extends React.Component {
 		this.state = {
 			jobFormsArray: [<JobForm />],
 			formView: true,
+			companyName: "poop",
+			location: "",
+			roleTitle: "",
+			startDate: "",
+			endDate: "",
+			tasks: "",
 		};
 		this.addJob = this.addJob.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	addJob() {
 		this.setState({
 			jobFormsArray: [...this.state.jobFormsArray, <JobForm />],
+		});
+	}
+	handleChange(e) {
+		this.setState({
+			[e.target.name]: e.target.value,
 		});
 	}
 
@@ -24,10 +37,9 @@ export default class Experience extends React.Component {
 	render() {
 		let isForm = this.state.formView;
 		const renderDisplay = () => {
-			if (!isForm) {
-				return; //<DisplayExperience />
+			if (isForm) {
+				return <JobForm jobInfo={this.state} onChange={this.handleChange} />;
 			} else {
-				return; //<JobForm />
 			}
 		};
 		// let form = this.state.jobFormsArray.map((job, i) => (
