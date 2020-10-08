@@ -1,12 +1,11 @@
 import React from "react";
-import JobForm from "./jobForm";
-import JobDisplay from "./jobDisplay";
+import JobFormAndDisplay from "./jobFormAndDisplay";
 
 export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			jobFormsArray: [<JobForm />],
+			jobFormsArray: [<JobFormAndDisplay />],
 			formView: true,
 			companyName: "poop",
 			location: "",
@@ -21,7 +20,7 @@ export default class Experience extends React.Component {
 
 	addJob() {
 		this.setState({
-			jobFormsArray: [...this.state.jobFormsArray, <JobForm />],
+			jobFormsArray: [...this.state.jobFormsArray, <JobFormAndDisplay />],
 		});
 	}
 	handleChange(e) {
@@ -31,21 +30,19 @@ export default class Experience extends React.Component {
 	}
 
 	handleSubmit(e) {
+		console.log("form was saved!");
 		e.preventDefault();
 	}
 
 	render() {
-		let isForm = this.state.formView;
-		const renderDisplay = () => {
-			if (isForm) {
-				return <JobForm jobInfo={this.state} onChange={this.handleChange} />;
-			} else {
-			}
-		};
-		// let form = this.state.jobFormsArray.map((job, i) => (
-		// 	<JobForm id={job.toString() + i} key={job + i} />
-		// )); // need to figure out a way to toggle between form view and display view.
-		//maybe control the state here and pass props down to job form?
+		let jobRendering = this.state.jobFormsArray.map((job, i) => (
+			<JobFormAndDisplay
+				id={job.toString() + i}
+				key={job + i}
+				jobInfo={this.state}
+				onChange={this.handleChange}
+			/>
+		));
 		return (
 			<main>
 				<h1>
@@ -53,7 +50,7 @@ export default class Experience extends React.Component {
 				</h1>
 				<button>Edit</button>
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
-					{renderDisplay()}
+					{jobRendering}
 					<input type="submit" value="Submit"></input>
 				</form>
 
