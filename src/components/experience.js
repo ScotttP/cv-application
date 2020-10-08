@@ -1,11 +1,12 @@
 import React from "react";
 import JobFormAndDisplay from "./jobFormAndDisplay";
+import EditAndSaveButton from "./editAndSaveButton";
 
 export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			jobFormsArray: [<JobFormAndDisplay />],
+			jobFormAndDisplayArray: [<JobFormAndDisplay />],
 			formView: true,
 			companyName: "poop",
 			location: "",
@@ -16,11 +17,20 @@ export default class Experience extends React.Component {
 		};
 		this.addJob = this.addJob.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.toggleJobView = this.toggleJobView.bind(this);
 	}
 
 	addJob() {
 		this.setState({
-			jobFormsArray: [...this.state.jobFormsArray, <JobFormAndDisplay />],
+			jobFormAndDisplayArray: [
+				...this.state.jobFormAndDisplayArray,
+				<JobFormAndDisplay />,
+			],
+		});
+	}
+	toggleJobView() {
+		this.setState({
+			formView: !this.state.formView,
 		});
 	}
 	handleChange(e) {
@@ -35,7 +45,7 @@ export default class Experience extends React.Component {
 	}
 
 	render() {
-		let jobRendering = this.state.jobFormsArray.map((job, i) => (
+		let jobRendering = this.state.jobFormAndDisplayArray.map((job, i) => (
 			<JobFormAndDisplay
 				id={job.toString() + i}
 				key={job + i}
@@ -48,15 +58,15 @@ export default class Experience extends React.Component {
 				<h1>
 					<u>Experience</u>
 				</h1>
-				<button>Edit</button>
+
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
 					{jobRendering}
-					<input type="submit" value="Submit"></input>
+					<EditAndSaveButton
+						view={this.state.formView}
+						toggleView={this.toggleJobView}
+						addJobOnClick={this.addJob}
+					/>
 				</form>
-
-				<button onClick={this.addJob} id="addJob">
-					+
-				</button>
 			</main>
 		);
 	}
