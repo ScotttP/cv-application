@@ -8,7 +8,7 @@ export default class Experience extends React.Component {
 		this.state = {
 			jobFormAndDisplayArray: [<JobFormAndDisplay />],
 			formView: true,
-			companyName: "poop",
+			companyName: "",
 			location: "",
 			roleTitle: "",
 			startDate: "",
@@ -27,13 +27,15 @@ export default class Experience extends React.Component {
 				<JobFormAndDisplay />,
 			],
 		});
+		console.log(this.state.infoArray);
 	}
 	toggleJobView() {
 		this.setState({
 			formView: !this.state.formView,
 		});
 	}
-	handleChange(e) {
+	handleChange(e, i) {
+		console.log(i); //index of this specific form
 		this.setState({
 			[e.target.name]: e.target.value,
 		});
@@ -47,10 +49,10 @@ export default class Experience extends React.Component {
 	render() {
 		let jobRendering = this.state.jobFormAndDisplayArray.map((job, i) => (
 			<JobFormAndDisplay
-				id={job.toString() + i}
+				id={i}
 				key={job + i}
 				jobInfo={this.state}
-				onChange={this.handleChange}
+				onChange={(e) => this.handleChange(e, i)}
 			/>
 		));
 		return (
