@@ -1,20 +1,23 @@
 import React from "react";
-import JobFormAndDisplay from "./jobFormAndDisplay";
+import ExperienceFormAndDisplay from "./jobFormAndDisplay";
 import EditAndSaveButton from "./editAndSaveButton";
+
 
 export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			jobFormAndDisplayArray: [<JobFormAndDisplay />],
+			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
 			formView: true,
-			companyName: "",
-			location: "",
-			roleTitle: "",
-			startDate: "",
-			endDate: "",
-			tasks: "",
-		};
+			experienceFormInformationArray: [{
+				companyName: "",
+				location: "",
+				roleTitle: "",
+				startDate: "",
+				endDate: "",
+				tasks: "",
+    		}]
+		}
 		this.addJob = this.addJob.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleJobView = this.toggleJobView.bind(this);
@@ -22,34 +25,48 @@ export default class Experience extends React.Component {
 
 	addJob() {
 		this.setState({
-			jobFormAndDisplayArray: [
-				...this.state.jobFormAndDisplayArray,
-				<JobFormAndDisplay />,
+			experienceFormAndDisplayArray: [
+				...this.state.experienceFormAndDisplayArray,
+				<ExperienceFormAndDisplay />,
 			],
+			experienceFormInformationArray: [
+				...this.state.experienceFormInformationArray,
+				{
+					companyName: "",
+					location: "",
+					roleTitle: "",
+					startDate: "",
+					endDate: "",
+					tasks: "",
+				}
+				,
+			]
 		});
-		console.log(this.state.infoArray);
 	}
 	toggleJobView() {
 		this.setState({
 			formView: !this.state.formView,
 		});
 	}
-	handleChange(e, i) {
-		console.log(i); //index of this specific form
+	handleChange(e, i) { //how do I get this to setState of a certain index in the experienceFormInformationArray?
+		
+		console.log(this.state.experienceFormInformationArray[i])
 		this.setState({
+			
 			[e.target.name]: e.target.value,
 		});
 	}
 
 	handleSubmit(e) {
-		console.log("form was saved!");
+		console.log("form submit button was clicked");
 		e.preventDefault();
 	}
 
 	render() {
-		let jobRendering = this.state.jobFormAndDisplayArray.map((job, i) => (
-			<JobFormAndDisplay
+		let jobRendering = this.state.experienceFormAndDisplayArray.map((job, i) => (
+			<ExperienceFormAndDisplay
 				id={i}
+				index = {i}
 				key={job + i}
 				jobInfo={this.state}
 				onChange={(e) => this.handleChange(e, i)}

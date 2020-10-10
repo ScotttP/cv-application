@@ -1,31 +1,33 @@
 import React from "react";
 
-export default function JobFormAndDisplay(props) {
+export default function ExperienceFormAndDisplay(props) {
 	const currentView = props.jobInfo.formView;
-	if (!currentView) {
+	let experienceInformation = props.jobInfo.experienceFormInformationArray[props.index]
+	console.log(experienceInformation.companyName)
+	if (!currentView) { //if the user set the view to display mode
 		return (
 			<div id={props.id}>
 				<div>
 					<h2>Company Name:</h2>
-					<p>{props.jobInfo.companyName}</p>
+					<p>{experienceInformation.companyName}</p>
 				</div>
 				<div>
 					<h2>Location:</h2>
-					<p>{props.jobInfo.location}</p>
+					<p>{experienceInformation.location}</p>
 				</div>
 				<div>
 					<h2>Role Title:</h2>
-					<p>{props.jobInfo.roleTitle}</p>
+					<p>{experienceInformation.roleTitle}</p>
 				</div>
 				<div>
 					<h2>Start Date:</h2>
-					<p>{props.jobInfo.startDate}</p>
+					<p>{experienceInformation.startDate}</p>
 					<h2>End Date:</h2>
-					<p>{props.jobInfo.endDate}</p>
+					<p>{experienceInformation.endDate}</p>
 				</div>
 				<div>
 					<h2>Tasks</h2>
-					<p>{props.jobInfo.tasks}</p>
+					<p>{experienceInformation.tasks}</p>
 				</div>
 				<button id="deleteJob">x</button>
 			</div>
@@ -36,10 +38,9 @@ export default function JobFormAndDisplay(props) {
 			<label>
 				Company Name:
 				<input
-					id={props.id}
 					name="companyName"
 					type="text"
-					value={props.jobInfo.companyName} //how do i get this to be the actual target value?
+					value={experienceInformation.companyName} 
 					onChange={props.onChange}
 					placeholder="ABC Company"
 				></input>
@@ -49,7 +50,7 @@ export default function JobFormAndDisplay(props) {
 				<input
 					name="location"
 					type="text"
-					value={props.jobInfo.location}
+					value={experienceInformation.location}
 					onChange={props.onChange}
 					placeholder="New York City, NY"
 				></input>
@@ -59,7 +60,7 @@ export default function JobFormAndDisplay(props) {
 				<input
 					name="roleTitle"
 					type="text"
-					value={props.jobInfo.roleTitle}
+					value={experienceInformation.roleTitle}
 					onChange={props.onChange}
 					placeholder="Software Developer"
 				></input>
@@ -69,14 +70,14 @@ export default function JobFormAndDisplay(props) {
 				<input
 					name="startDate"
 					type="Date"
-					value={props.jobInfo.startDate}
+					value={experienceInformation.startDate}
 					onChange={props.onChange}
 				></input>
 				End Date:
 				<input
 					name="endDate"
 					type="Date"
-					value={props.jobInfo.endDate}
+					value={experienceInformation.endDate}
 					onChange={props.onChange}
 				></input>
 			</label>
@@ -85,7 +86,7 @@ export default function JobFormAndDisplay(props) {
 				<textarea
 					name="tasks"
 					type="text"
-					value={props.jobInfo.tasks}
+					value={experienceInformation.tasks}
 					onChange={props.onChange}
 					placeholder="Enter Tasks Here"
 				></textarea>
