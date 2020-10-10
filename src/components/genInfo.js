@@ -11,7 +11,7 @@ export default class GeneralInformation extends React.Component {
 					height="200"
 				></img>
 				<h1>Scott Pribe</h1>
-				<h3>419-450-2549</h3>
+				<h3>***-***-****</h3>
 				<div id="professionalContactContainer">
 					<ul id="listContainer">
 						<li>linkedIn (icons)</li>

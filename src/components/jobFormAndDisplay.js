@@ -1,33 +1,33 @@
 import React from "react";
 
 export default function ExperienceFormAndDisplay(props) {
-	const currentView = props.jobInfo.formView;
-	let experienceInformation = props.jobInfo.experienceFormInformationArray[props.index]
-	console.log(experienceInformation.companyName)
+	const currentView = props.view;
+	// let experienceInformation = props.jobInfo.experienceFormInformationArray[props.index]
+	//console.log(props.jobInfo.companyName)
 	if (!currentView) { //if the user set the view to display mode
 		return (
 			<div id={props.id}>
 				<div>
 					<h2>Company Name:</h2>
-					<p>{experienceInformation.companyName}</p>
+					<p>{props.jobInfo.companyName}</p>
 				</div>
 				<div>
 					<h2>Location:</h2>
-					<p>{experienceInformation.location}</p>
+					<p>{props.jobInfo.location}</p>
 				</div>
 				<div>
 					<h2>Role Title:</h2>
-					<p>{experienceInformation.roleTitle}</p>
+					<p>{props.jobInfo.roleTitle}</p>
 				</div>
 				<div>
 					<h2>Start Date:</h2>
-					<p>{experienceInformation.startDate}</p>
+					<p>{props.jobInfo.startDate}</p>
 					<h2>End Date:</h2>
-					<p>{experienceInformation.endDate}</p>
+					<p>{props.jobInfo.endDate}</p>
 				</div>
 				<div>
 					<h2>Tasks</h2>
-					<p>{experienceInformation.tasks}</p>
+					<p>{props.jobInfo.tasks}</p>
 				</div>
 				<button id="deleteJob">x</button>
 			</div>
@@ -40,7 +40,7 @@ export default function ExperienceFormAndDisplay(props) {
 				<input
 					name="companyName"
 					type="text"
-					value={experienceInformation.companyName} 
+					value={props.jobInfo.companyName} 
 					onChange={props.onChange}
 					placeholder="ABC Company"
 				></input>
@@ -50,7 +50,7 @@ export default function ExperienceFormAndDisplay(props) {
 				<input
 					name="location"
 					type="text"
-					value={experienceInformation.location}
+					value={props.jobInfo.location}
 					onChange={props.onChange}
 					placeholder="New York City, NY"
 				></input>
@@ -60,7 +60,7 @@ export default function ExperienceFormAndDisplay(props) {
 				<input
 					name="roleTitle"
 					type="text"
-					value={experienceInformation.roleTitle}
+					value={props.jobInfo.roleTitle}
 					onChange={props.onChange}
 					placeholder="Software Developer"
 				></input>
@@ -70,14 +70,14 @@ export default function ExperienceFormAndDisplay(props) {
 				<input
 					name="startDate"
 					type="Date"
-					value={experienceInformation.startDate}
+					value={props.jobInfo.startDate}
 					onChange={props.onChange}
 				></input>
 				End Date:
 				<input
 					name="endDate"
 					type="Date"
-					value={experienceInformation.endDate}
+					value={props.jobInfo.endDate}
 					onChange={props.onChange}
 				></input>
 			</label>
@@ -86,7 +86,7 @@ export default function ExperienceFormAndDisplay(props) {
 				<textarea
 					name="tasks"
 					type="text"
-					value={experienceInformation.tasks}
+					value={props.jobInfo.tasks}
 					onChange={props.onChange}
 					placeholder="Enter Tasks Here"
 				></textarea>
@@ -94,8 +94,4 @@ export default function ExperienceFormAndDisplay(props) {
 			<button id="deleteJob">x</button>
 		</div>
 	);
-}
-{
-	/* <JobDisplay jobDisplayInfo={props} />;
-<JobForm jobFormInfo={props} />; */
 }

@@ -10,7 +10,7 @@ export default class Experience extends React.Component {
 			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
 			formView: true,
 			experienceFormInformationArray: [{
-				companyName: "",
+				companyName: "First Solar",
 				location: "",
 				roleTitle: "",
 				startDate: "",
@@ -50,11 +50,12 @@ export default class Experience extends React.Component {
 	}
 	handleChange(e, i) { //how do I get this to setState of a certain index in the experienceFormInformationArray?
 		
-		console.log(this.state.experienceFormInformationArray[i])
-		this.setState({
-			
-			[e.target.name]: e.target.value,
-		});
+		this.setState((prevstate,e) => ({
+			experienceFormInformationArray : prevstate.experienceFormInformationArray.map(
+				info => console.log(info)
+			)
+			//https://stackoverflow.com/questions/43638938/updating-an-object-with-setstate-in-react
+		}));
 	}
 
 	handleSubmit(e) {
@@ -68,6 +69,7 @@ export default class Experience extends React.Component {
 				id={i}
 				index = {i}
 				key={job + i}
+				view={this.state.formView}
 				jobInfo={this.state}
 				onChange={(e) => this.handleChange(e, i)}
 			/>
