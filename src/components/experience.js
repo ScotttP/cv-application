@@ -2,6 +2,14 @@ import React from "react";
 import ExperienceFormAndDisplay from "./jobFormAndDisplay";
 import EditAndSaveButton from "./editAndSaveButton";
 
+const infoObject = {
+	companyName: "",
+	location: "",
+	roleTitle: "",
+	startDate: "",
+	endDate: "",
+	tasks: "",
+}
 
 export default class Experience extends React.Component {
 	constructor(props) {
@@ -9,14 +17,7 @@ export default class Experience extends React.Component {
 		this.state = {
 			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
 			formView: true,
-			experienceFormInformationArray: [{
-				companyName: "First Solar",
-				location: "",
-				roleTitle: "",
-				startDate: "",
-				endDate: "",
-				tasks: "",
-    		}]
+			experienceFormInformationArray: [infoObject]
 		}
 		this.addJob = this.addJob.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -31,14 +32,7 @@ export default class Experience extends React.Component {
 			],
 			experienceFormInformationArray: [
 				...this.state.experienceFormInformationArray,
-				{
-					companyName: "",
-					location: "",
-					roleTitle: "",
-					startDate: "",
-					endDate: "",
-					tasks: "",
-				}
+				infoObject
 				,
 			]
 		});
@@ -49,12 +43,13 @@ export default class Experience extends React.Component {
 		});
 	}
 	handleChange(e, i) { //how do I get this to setState of a certain index in the experienceFormInformationArray?
-		
-		this.setState((prevstate,e) => ({
-			experienceFormInformationArray : prevstate.experienceFormInformationArray.map(
-				info => console.log(info)
+		console.log(e.target)
+		let key = 0
+		this.setState(prevstate => ({
+			experienceFormInformationArray: prevstate.experienceFormInformationArray.map(
+			info => key === 0 ? {...info, [e.target.name]: e.target.value}: info
 			)
-			//https://stackoverflow.com/questions/43638938/updating-an-object-with-setstate-in-react
+			
 		}));
 	}
 
@@ -66,7 +61,7 @@ export default class Experience extends React.Component {
 	render() {
 		let jobRendering = this.state.experienceFormAndDisplayArray.map((job, i) => (
 			<ExperienceFormAndDisplay
-				id={i}
+				id={"formAtIndex" + i}
 				index = {i}
 				key={job + i}
 				view={this.state.formView}

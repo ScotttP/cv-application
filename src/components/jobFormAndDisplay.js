@@ -3,7 +3,7 @@ import React from "react";
 export default function ExperienceFormAndDisplay(props) {
 	const currentView = props.view;
 	// let experienceInformation = props.jobInfo.experienceFormInformationArray[props.index]
-	//console.log(props.jobInfo.companyName)
+	
 	if (!currentView) { //if the user set the view to display mode
 		return (
 			<div id={props.id}>
@@ -38,6 +38,7 @@ export default function ExperienceFormAndDisplay(props) {
 			<label>
 				Company Name:
 				<input
+					id={props.index}
 					name="companyName"
 					type="text"
 					value={props.jobInfo.companyName} 
