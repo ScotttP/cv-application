@@ -20,6 +20,7 @@ export default class ExperienceFormAndDisplay extends React.Component{
 		})
 	}
 
+
 	render () {
 		if (this.props.view === false){
 			return (
@@ -46,7 +47,7 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<h2>Tasks</h2>
 					<p>{this.state.tasks}</p>
 				</div>
-				<button id="deleteJob">x</button>
+
 			</div>
 				
 			)
@@ -110,7 +111,7 @@ export default class ExperienceFormAndDisplay extends React.Component{
 						placeholder="Enter Tasks Here"
 					></textarea>
 				</label>
-				<button id="deleteJob">x</button>
+				<button id={`deleteJobAtIndex${this.props.index}`}type="button" onClick={this.props.deleteJobOnClick}>x</button>
 			</div>
 			)
 		}

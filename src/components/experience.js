@@ -21,6 +21,17 @@ export default class Experience extends React.Component {
 				<ExperienceFormAndDisplay />,
 			],
 		});
+		console.log(this.state.experienceFormAndDisplayArray)
+	}
+	deleteJob(e) { //this doesn't work
+		console.log(this.state.experienceFormAndDisplayArray)
+		let index = e.target.id.substring(e.target.id.length - 1, 17)
+		let newArray = this.state.experienceFormAndDisplayArray.splice(index, 1)
+		console.log(newArray)
+		this.setState({
+			experienceFormAndDisplayArray: newArray
+		})
+
 	}
 	toggleJobView() {
 		this.setState({
@@ -40,6 +51,7 @@ export default class Experience extends React.Component {
 				index = {i}
 				key={job + i}
 				view={this.state.formView}
+				deleteJobOnClick={(e) => this.deleteJob(e)}
 			/>
 		));
 		return (
