@@ -1,15 +1,7 @@
 import React from "react";
-import ExperienceFormAndDisplay from "./jobFormAndDisplay";
+import ExperienceFormAndDisplay from "./experienceFormAndDisplay";
 import EditAndSaveButton from "./editAndSaveButton";
 
-const infoObject = {
-	companyName: "",
-	location: "",
-	roleTitle: "",
-	startDate: "",
-	endDate: "",
-	tasks: "",
-}
 
 export default class Experience extends React.Component {
 	constructor(props) {
@@ -17,10 +9,8 @@ export default class Experience extends React.Component {
 		this.state = {
 			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
 			formView: true,
-			experienceFormInformationArray: [infoObject]
 		}
 		this.addJob = this.addJob.bind(this);
-		this.handleChange = this.handleChange.bind(this);
 		this.toggleJobView = this.toggleJobView.bind(this);
 	}
 
@@ -30,27 +20,12 @@ export default class Experience extends React.Component {
 				...this.state.experienceFormAndDisplayArray,
 				<ExperienceFormAndDisplay />,
 			],
-			experienceFormInformationArray: [
-				...this.state.experienceFormInformationArray,
-				infoObject
-				,
-			]
 		});
 	}
 	toggleJobView() {
 		this.setState({
 			formView: !this.state.formView,
 		});
-	}
-	handleChange(e, i) { //how do I get this to setState of a certain index in the experienceFormInformationArray?
-		console.log(e.target)
-		let key = 0
-		this.setState(prevstate => ({
-			experienceFormInformationArray: prevstate.experienceFormInformationArray.map(
-			info => key === 0 ? {...info, [e.target.name]: e.target.value}: info
-			)
-			
-		}));
 	}
 
 	handleSubmit(e) {
@@ -65,8 +40,6 @@ export default class Experience extends React.Component {
 				index = {i}
 				key={job + i}
 				view={this.state.formView}
-				jobInfo={this.state}
-				onChange={(e) => this.handleChange(e, i)}
 			/>
 		));
 		return (
