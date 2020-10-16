@@ -14,7 +14,7 @@ export default class ExperienceFormAndDisplay extends React.Component{
 		this.handleChange = this.handleChange.bind(this);
 	}
 	
-	handleChange(e) { //how do I get this to setState of a certain index in the experienceFormInformationArray?
+	handleChange(e) { 
 		this.setState({
 			[e.target.name]: e.target.value
 		})
@@ -111,7 +111,7 @@ export default class ExperienceFormAndDisplay extends React.Component{
 						placeholder="Enter Tasks Here"
 					></textarea>
 				</label>
-				<button id={`deleteJobAtIndex${this.props.index}`}type="button" onClick={this.props.deleteJobOnClick}>x</button>
+				<button id={`deleteJobAtIndex${this.props.index}`} onClick={(e) => this.props.deleteJobOnClick(e)}>x</button>
 			</div>
 			)
 		}

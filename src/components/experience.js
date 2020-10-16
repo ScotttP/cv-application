@@ -7,7 +7,7 @@ export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay key={0}/>],
+			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
 			formView: true,
 		}
 		this.addJob = this.addJob.bind(this);
@@ -15,28 +15,14 @@ export default class Experience extends React.Component {
 	}
 
 	addJob() {
-		
-		this.setState({
-			experienceFormAndDisplayArray: [
-				...this.state.experienceFormAndDisplayArray,
-				<ExperienceFormAndDisplay/>,
-			],
-		});
-		
+	
 		
 	}
 	
-	deleteJob(index) { //this doesn't work
-
-	const copyFormArray = Object.assign([], this.state.experienceFormAndDisplayArray)
-	copyFormArray.splice(index, 1);
-	console.log(copyFormArray[index])
-	console.log(this)
-	this.setState({
-		experienceFormAndDisplayArray: copyFormArray
-	})
-
+	deleteJob(e) { 
+		console.log(e.target.id)
 	}
+	
 	toggleJobView() {
 		this.setState({
 			formView: !this.state.formView,
@@ -49,15 +35,18 @@ export default class Experience extends React.Component {
 	}
 
 	render() {
-		let jobRendering = this.state.experienceFormAndDisplayArray.map((job,i) => (
+			const jobRendering = this.state.experienceFormAndDisplayArray.map((job,i) => (
+			
 			<ExperienceFormAndDisplay
 				id={"formAtIndex" + i}
 				index = {i}
 				key={job.toString()+i}
 				view={this.state.formView}
-				deleteJobOnClick={this.deleteJob.bind(this, i)}
+				deleteJobOnClick={(e) => this.deleteJob(e)}
 			/>
+			
 		));
+		console.log(typeof jobRendering)
 		
 		return (
 			<main>
@@ -67,13 +56,15 @@ export default class Experience extends React.Component {
 
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
 					{jobRendering}
-					<EditAndSaveButton
+				</form>
+			
+				<EditAndSaveButton
 						view={this.state.formView}
 						toggleView={this.toggleJobView}
 						addJobOnClick={this.addJob}
-					/>
-				</form>
+				/>			
 			</main>
+
 		);
 	}
 }
