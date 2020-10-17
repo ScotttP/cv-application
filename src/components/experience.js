@@ -7,23 +7,53 @@ export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			experienceFormAndDisplayArray: [<ExperienceFormAndDisplay />],
+			experienceData: [{
+				companyName: "",
+				location: "",
+				roleTitle: "",
+				startDate: "",
+				endDate: "",
+				tasks: "",
+			}],
 			formView: true,
 		}
 		this.addJob = this.addJob.bind(this);
-		this.toggleJobView = this.toggleJobView.bind(this);
+		this.toggleView = this.toggleView.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	addJob() {
-	
-		
+		this.setState({
+			experienceData : [...this.state.experienceData, {
+			companyName: "",
+			location: "",
+			roleTitle: "",
+			startDate: "",
+			endDate: "",
+			tasks: "",}]
+		})
+
 	}
 	
 	deleteJob(e) { 
-		console.log(e.target.id)
+		let index = Number(e.target.id.substring(e.target.id.length - 1, 17))
+		const copyFormArray = Object.assign([], this.state.experienceData)
+		copyFormArray.splice(index, 1);
+		this.setState({
+			experienceData: copyFormArray
+		})
+		
+	}
+	handleChange(e) {
+		let index = Number(e.target.id.substring(e.target.id.length - 1, 12)) 
+		const copyFormArray = JSON.parse(JSON.stringify(this.state.experienceData))
+		copyFormArray[index][e.target.name] = e.target.value
+		this.setState({
+			experienceData: copyFormArray
+		})
 	}
 	
-	toggleJobView() {
+	toggleView() {
 		this.setState({
 			formView: !this.state.formView,
 		});
@@ -35,7 +65,7 @@ export default class Experience extends React.Component {
 	}
 
 	render() {
-			const jobRendering = this.state.experienceFormAndDisplayArray.map((job,i) => (
+			const jobRendering = this.state.experienceData.map((job,i) => (
 			
 			<ExperienceFormAndDisplay
 				id={"formAtIndex" + i}
@@ -43,10 +73,12 @@ export default class Experience extends React.Component {
 				key={job.toString()+i}
 				view={this.state.formView}
 				deleteJobOnClick={(e) => this.deleteJob(e)}
+				data={this.state.experienceData[i]}
+				handleChange={this.handleChange}
 			/>
 			
 		));
-		console.log(typeof jobRendering)
+		
 		
 		return (
 			<main>
@@ -60,7 +92,7 @@ export default class Experience extends React.Component {
 			
 				<EditAndSaveButton
 						view={this.state.formView}
-						toggleView={this.toggleJobView}
+						toggleView={this.toggleView}
 						addJobOnClick={this.addJob}
 				/>			
 			</main>

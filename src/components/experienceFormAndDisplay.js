@@ -1,51 +1,31 @@
 import React from "react";
 
 export default class ExperienceFormAndDisplay extends React.Component{
-	constructor(props) {
-		super(props);
-		this.state = {
-			companyName: "",
-			location: "",
-			roleTitle: "",
-			startDate: "",
-			endDate: "",
-			tasks: "",
-		}
-		this.handleChange = this.handleChange.bind(this);
-	}
-	
-	handleChange(e) { 
-		this.setState({
-			[e.target.name]: e.target.value
-		})
-	}
-
-
 	render () {
 		if (this.props.view === false){
 			return (
 				<div id={this.props.index}>
 				<div>
 					<h2>Company Name:</h2>
-					<p>{this.state.companyName}</p>
+					<p>{this.props.data.companyName}</p>
 				</div>
 				<div>
 					<h2>Location:</h2>
-					<p>{this.state.location}</p>
+					<p>{this.props.data.location}</p>
 				</div>
 				<div>
 					<h2>Role Title:</h2>
-					<p>{this.state.roleTitle}</p>
+					<p>{this.props.data.roleTitle}</p>
 				</div>
 				<div>
 					<h2>Start Date:</h2>
-					<p>{this.state.startDate}</p>
+					<p>{this.props.data.startDate}</p>
 					<h2>End Date:</h2>
-					<p>{this.state.endDate}</p>
+					<p>{this.props.data.endDate}</p>
 				</div>
 				<div>
 					<h2>Tasks</h2>
-					<p>{this.state.tasks}</p>
+					<p>{this.props.data.tasks}</p>
 				</div>
 
 			</div>
@@ -60,8 +40,9 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<input
 						name="companyName"
 						type="text"
-						value={this.state.companyName} 
-						onChange={this.handleChange}
+						id = {`companyName${this.props.index}`}
+						value={this.props.data.companyName} 
+						onChange={this.props.handleChange}
 						placeholder="ABC Company"
 					></input>
 				</label>
@@ -70,8 +51,9 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<input
 						name="location"
 						type="text"
-						value={this.state.location}
-						onChange={this.handleChange}
+						id = {`location${this.props.index}`}
+						value={this.props.data.location}
+						onChange={this.props.handleChange}
 						placeholder="New York City, NY"
 					></input>
 				</label>
@@ -80,8 +62,9 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<input
 						name="roleTitle"
 						type="text"
-						value={this.state.roleTitle}
-						onChange={this.handleChange}
+						id = {`roleTitle${this.props.index}`}
+						value={this.props.data.roleTitle}
+						onChange={this.props.handleChange}
 						placeholder="Software Developer"
 					></input>
 				</label>
@@ -90,15 +73,17 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<input
 						name="startDate"
 						type="Date"
-						value={this.state.startDate}
-						onChange={this.handleChange}
+						id = {`startDate${this.props.index}`}
+						value={this.props.data.startDate}
+						onChange={this.props.handleChange}
 					></input>
 					End Date:
 					<input
 						name="endDate"
 						type="Date"
-						value={this.state.endDate}
-						onChange={this.handleChange}
+						id = {`endDate${this.props.index}`}
+						value={this.props.data.endDate}
+						onChange={this.props.handleChange}
 					></input>
 				</label>
 				<label>
@@ -106,8 +91,9 @@ export default class ExperienceFormAndDisplay extends React.Component{
 					<textarea
 						name="tasks"
 						type="text"
-						value={this.state.tasks}
-						onChange={this.handleChange}
+						id = {`tasks${this.props.index}`}
+						value={this.props.data.tasks}
+						onChange={this.props.handleChange}
 						placeholder="Enter Tasks Here"
 					></textarea>
 				</label>
