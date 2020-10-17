@@ -1,8 +1,8 @@
 import React from "react";
-import EditAndSaveButton from "./editAndSaveButton";
+import EditAndSaveButton from "../editAndSaveButton";
 import EducationFormAndDisplay from "./educationFormAndDisplay";
 
-export default class Experience extends React.Component {
+export default class Education extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {

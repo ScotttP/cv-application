@@ -1,6 +1,6 @@
 import React from "react";
 import ExperienceFormAndDisplay from "./experienceFormAndDisplay";
-import EditAndSaveButton from "./editAndSaveButton";
+import EditAndSaveButton from "../editAndSaveButton";
 
 export default class Experience extends React.Component {
 	constructor(props) {

@@ -1,7 +1,8 @@
 import React from "react";
 import GeneralInformation from "./components/genInfo";
-import Experience from "./components/experience";
-import Education from "./components/education";
+import Experience from "./components/experience/experience";
+import Education from "./components/education/education";
+import Skills from "./components/skills/skills";
 import "./App.css";
 
 export default class App extends React.Component {
@@ -11,6 +12,7 @@ export default class App extends React.Component {
 				<GeneralInformation />
 				<Experience />
 				<Education />
+				<Skills />
 			</div>
 		);
 	}

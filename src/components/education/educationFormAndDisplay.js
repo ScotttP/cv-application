@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class ExperienceFormAndDisplay extends React.Component {
+export default class EducationFormAndDisplay extends React.Component {
 	render() {
 		if (this.props.view === false) {
 			return (
