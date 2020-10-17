@@ -40,7 +40,7 @@ export default class Experience extends React.Component {
 	}
 
 	deleteJob(e) {
-		let index = Number(e.target.id.substring(e.target.id.length - 1, 17));
+		const index = Number(e.target.id.substring(e.target.id.length - 1, 17));
 		const copyFormArray = Object.assign([], this.state.experienceData);
 		copyFormArray.splice(index, 1);
 		this.setState({
@@ -48,7 +48,7 @@ export default class Experience extends React.Component {
 		});
 	}
 	handleChange(e) {
-		let index = Number(e.target.id.substring(e.target.id.length - 1, 12));
+		const index = Number(e.target.id.substring(e.target.id.length - 1, 12));
 		const copyFormArray = JSON.parse(JSON.stringify(this.state.experienceData));
 		copyFormArray[index][e.target.name] = e.target.value;
 		this.setState({
@@ -93,7 +93,7 @@ export default class Experience extends React.Component {
 				<EditAndSaveButton
 					view={this.state.formView}
 					toggleView={this.toggleView}
-					addJobOnClick={this.addJob}
+					addSection={this.addJob}
 				/>
 			</main>
 		);

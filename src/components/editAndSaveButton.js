@@ -10,7 +10,7 @@ export default function EditAndSaveButton(props) {
 		return (
 			<div>
 				<input type="submit" value="Save" onClick={props.toggleView}></input>
-				<button onClick={props.addJobOnClick} id="addJob">
+				<button onClick={props.addSection} id="addJob">
 					+
 				</button>
 			</div>
