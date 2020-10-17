@@ -2,21 +2,22 @@ import React from "react";
 import ExperienceFormAndDisplay from "./experienceFormAndDisplay";
 import EditAndSaveButton from "./editAndSaveButton";
 
-
 export default class Experience extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			experienceData: [{
-				companyName: "",
-				location: "",
-				roleTitle: "",
-				startDate: "",
-				endDate: "",
-				tasks: "",
-			}],
+			experienceData: [
+				{
+					companyName: "",
+					location: "",
+					roleTitle: "",
+					startDate: "",
+					endDate: "",
+					tasks: "",
+				},
+			],
 			formView: true,
-		}
+		};
 		this.addJob = this.addJob.bind(this);
 		this.toggleView = this.toggleView.bind(this);
 		this.handleChange = this.handleChange.bind(this);
@@ -24,35 +25,37 @@ export default class Experience extends React.Component {
 
 	addJob() {
 		this.setState({
-			experienceData : [...this.state.experienceData, {
-			companyName: "",
-			location: "",
-			roleTitle: "",
-			startDate: "",
-			endDate: "",
-			tasks: "",}]
-		})
-
+			experienceData: [
+				...this.state.experienceData,
+				{
+					companyName: "",
+					location: "",
+					roleTitle: "",
+					startDate: "",
+					endDate: "",
+					tasks: "",
+				},
+			],
+		});
 	}
-	
-	deleteJob(e) { 
-		let index = Number(e.target.id.substring(e.target.id.length - 1, 17))
-		const copyFormArray = Object.assign([], this.state.experienceData)
+
+	deleteJob(e) {
+		let index = Number(e.target.id.substring(e.target.id.length - 1, 17));
+		const copyFormArray = Object.assign([], this.state.experienceData);
 		copyFormArray.splice(index, 1);
 		this.setState({
-			experienceData: copyFormArray
-		})
-		
+			experienceData: copyFormArray,
+		});
 	}
 	handleChange(e) {
-		let index = Number(e.target.id.substring(e.target.id.length - 1, 12)) 
-		const copyFormArray = JSON.parse(JSON.stringify(this.state.experienceData))
-		copyFormArray[index][e.target.name] = e.target.value
+		let index = Number(e.target.id.substring(e.target.id.length - 1, 12));
+		const copyFormArray = JSON.parse(JSON.stringify(this.state.experienceData));
+		copyFormArray[index][e.target.name] = e.target.value;
 		this.setState({
-			experienceData: copyFormArray
-		})
+			experienceData: copyFormArray,
+		});
 	}
-	
+
 	toggleView() {
 		this.setState({
 			formView: !this.state.formView,
@@ -65,21 +68,18 @@ export default class Experience extends React.Component {
 	}
 
 	render() {
-			const jobRendering = this.state.experienceData.map((job,i) => (
-			
+		const jobRendering = this.state.experienceData.map((job, i) => (
 			<ExperienceFormAndDisplay
 				id={"formAtIndex" + i}
-				index = {i}
-				key={job.toString()+i}
+				index={i}
+				key={job.toString() + i}
 				view={this.state.formView}
 				deleteJobOnClick={(e) => this.deleteJob(e)}
 				data={this.state.experienceData[i]}
 				handleChange={this.handleChange}
 			/>
-			
 		));
-		
-		
+
 		return (
 			<main>
 				<h1>
@@ -89,14 +89,13 @@ export default class Experience extends React.Component {
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
 					{jobRendering}
 				</form>
-			
-				<EditAndSaveButton
-						view={this.state.formView}
-						toggleView={this.toggleView}
-						addJobOnClick={this.addJob}
-				/>			
-			</main>
 
+				<EditAndSaveButton
+					view={this.state.formView}
+					toggleView={this.toggleView}
+					addJobOnClick={this.addJob}
+				/>
+			</main>
 		);
 	}
 }
