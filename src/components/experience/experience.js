@@ -81,20 +81,19 @@ export default class Experience extends React.Component {
 		));
 
 		return (
-			<main>
+			<main id="experienceFormContainer">
 				<h1>
 					<u>Experience</u>
 				</h1>
 
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
 					{jobRendering}
+					<EditAndSaveButton
+						view={this.state.formView}
+						toggleView={this.toggleView}
+						addSection={this.addJob}
+					/>
 				</form>
-
-				<EditAndSaveButton
-					view={this.state.formView}
-					toggleView={this.toggleView}
-					addSection={this.addJob}
-				/>
 			</main>
 		);
 	}

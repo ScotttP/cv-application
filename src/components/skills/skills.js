@@ -49,7 +49,7 @@ export default class Skills extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log("form submit button was clicked"); //probably some local storage thing here
+		console.log(e.target); //probably some local storage thing here
 		e.preventDefault();
 	}
 	render() {
@@ -65,20 +65,19 @@ export default class Skills extends React.Component {
 			/>
 		));
 		return (
-			<main>
+			<main id="skillsFormContainer">
 				<h1>
 					<u>Skills</u>
 				</h1>
 
 				<form id="skillsForm" onSubmit={this.handleSubmit}>
 					{skillsRendering}
+					<EditAndSaveButton
+						view={this.state.formView}
+						toggleView={this.toggleView}
+						addSection={this.addSkill}
+					/>
 				</form>
-
-				<EditAndSaveButton
-					view={this.state.formView}
-					toggleView={this.toggleView}
-					addSection={this.addSkill}
-				/>
 			</main>
 		);
 	}

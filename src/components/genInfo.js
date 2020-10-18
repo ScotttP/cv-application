@@ -5,7 +5,7 @@ export default class GeneralInformation extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "Scott Pribe",
+			name: "John Smith",
 			phone: "555-555-5555",
 			formView: true,
 		};
@@ -57,32 +57,34 @@ export default class GeneralInformation extends React.Component {
 						width="200"
 						height="200"
 					></img>
-					<input
-						name="name"
-						type="text"
-						value={this.state.name}
-						onChange={this.handleChange}
-						placeholder="John Smith"
-					></input>
-					<input //need some form validation here
-						name="phone"
-						type="text"
-						value={this.state.phone}
-						onChange={this.handleChange}
-						placeholder="555-555-5555"
-					></input>
-					<div id="professionalContactContainer">
-						<ul id="listContainer">
-							<li>linkedIn (icons)</li>
-							<li>Github (icons)</li>
-							<li>Email (icons)</li>
-						</ul>
-					</div>
-					<EditAndSaveButton
-						section="generalInfo"
-						view={this.state.formView}
-						toggleView={this.toggleView}
-					/>
+					<form id="generalInfoForm">
+						<input
+							name="name"
+							type="text"
+							value={this.state.name}
+							onChange={this.handleChange}
+							placeholder="John Smith"
+						></input>
+						<input //need some form validation here
+							name="phone"
+							type="text"
+							value={this.state.phone}
+							onChange={this.handleChange}
+							placeholder="555-555-5555"
+						></input>
+						<div id="professionalContactContainer">
+							<ul id="listContainer">
+								<li>linkedIn (icons)</li>
+								<li>Github (icons)</li>
+								<li>Email (icons)</li>
+							</ul>
+						</div>
+						<EditAndSaveButton
+							section="generalInfo"
+							view={this.state.formView}
+							toggleView={this.toggleView}
+						/>
+					</form>
 				</aside>
 			);
 		}

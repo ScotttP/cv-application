@@ -1,7 +1,9 @@
 import React from "react";
 export default function EditAndSaveButton(props) {
 	if (props.view === false) {
-		return <button onClick={props.toggleView}>Edit</button>;
+		return (
+			<input type="button" value="Edit" onClick={props.toggleView}></input>
+		);
 	} else if (props.section === "generalInfo") {
 		return (
 			<input type="submit" value="Save" onClick={props.toggleView}></input>
@@ -10,9 +12,12 @@ export default function EditAndSaveButton(props) {
 		return (
 			<div>
 				<input type="submit" value="Save" onClick={props.toggleView}></input>
-				<button onClick={props.addSection} id="addJob">
-					+
-				</button>
+				<input
+					type="button"
+					onClick={props.addSection}
+					className="addEntryButton"
+					value="+"
+				></input>
 			</div>
 		);
 	}

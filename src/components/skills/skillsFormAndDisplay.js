@@ -23,12 +23,12 @@ export default class SkillsFormAndDisplay extends React.Component {
 							placeholder="Javascript"
 						></input>
 					</label>
-					<button
+					<input
 						id={`deleteSkillAtIndex${this.props.index}`}
 						onClick={(e) => this.props.deleteSkillOnClick(e)}
-					>
-						x
-					</button>
+						value="x"
+						type="button"
+					></input>
 				</div>
 			);
 		}
