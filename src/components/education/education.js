@@ -21,6 +21,8 @@ export default class Education extends React.Component {
 		this.addEducation = this.addEducation.bind(this);
 		this.toggleView = this.toggleView.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.wrapperFunction = this.wrapperFunction.bind(this);
 	}
 	addEducation() {
 		this.setState({
@@ -59,8 +61,13 @@ export default class Education extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log("form submit button was clicked"); //probably some local storage thing here
+		console.log(e); //probably some local storage thing here
 		e.preventDefault();
+	}
+	wrapperFunction(e) {
+		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
+		this.toggleView();
+		this.handleSubmit(e);
 	}
 	render() {
 		const educationRendering = this.state.educationData.map((education, i) => (
@@ -86,6 +93,7 @@ export default class Education extends React.Component {
 						view={this.state.formView}
 						toggleView={this.toggleView}
 						addSection={this.addEducation}
+						wrapperFunction={this.wrapperFunction}
 					/>
 				</form>
 			</main>

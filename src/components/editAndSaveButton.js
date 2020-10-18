@@ -2,7 +2,7 @@ import React from "react";
 export default function EditAndSaveButton(props) {
 	if (props.view === false) {
 		return (
-			<input type="button" value="Edit" onClick={props.toggleView}></input>
+			<input type="button" value="Edit" onClick={props.wrapperFunction}></input>
 		);
 	} else if (props.section === "generalInfo") {
 		return (

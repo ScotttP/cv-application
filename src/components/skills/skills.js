@@ -56,6 +56,7 @@ export default class Skills extends React.Component {
 	}
 
 	wrapperFunction(e) {
+		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
 		this.toggleView();
 		this.handleSubmit(e);
 	}

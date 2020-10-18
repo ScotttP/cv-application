@@ -11,6 +11,8 @@ export default class GeneralInformation extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleView = this.toggleView.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.wrapperFunction = this.wrapperFunction.bind(this);
 	}
 	handleChange(e) {
 		this.setState({
@@ -21,6 +23,16 @@ export default class GeneralInformation extends React.Component {
 		this.setState({
 			formView: !this.state.formView,
 		});
+	}
+	handleSubmit(e) {
+		console.log(e); //probably some local storage thing here
+		e.preventDefault();
+	}
+
+	wrapperFunction(e) {
+		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
+		this.toggleView();
+		this.handleSubmit(e);
 	}
 	render() {
 		if (this.state.formView === false) {
@@ -45,6 +57,7 @@ export default class GeneralInformation extends React.Component {
 						section="generalInfo"
 						view={this.state.formView}
 						toggleView={this.toggleView}
+						wrapperFunction={this.wrapperFunction}
 					/>
 				</aside>
 			);
