@@ -16,6 +16,8 @@ export default class Skills extends React.Component {
 		this.addSkill = this.addSkill.bind(this);
 		this.toggleView = this.toggleView.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.wrapperFunction = this.wrapperFunction.bind(this);
 	}
 	addSkill() {
 		this.setState({
@@ -49,9 +51,15 @@ export default class Skills extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log(e.target); //probably some local storage thing here
+		console.log(e); //probably some local storage thing here
 		e.preventDefault();
 	}
+
+	wrapperFunction(e) {
+		this.toggleView();
+		this.handleSubmit(e);
+	}
+
 	render() {
 		const skillsRendering = this.state.skillsData.map((skill, i) => (
 			<SkillsFormAndDisplay
@@ -76,6 +84,7 @@ export default class Skills extends React.Component {
 						view={this.state.formView}
 						toggleView={this.toggleView}
 						addSection={this.addSkill}
+						wrapperFunction={this.wrapperFunction}
 					/>
 				</form>
 			</main>

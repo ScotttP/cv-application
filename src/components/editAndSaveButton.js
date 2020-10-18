@@ -11,7 +11,11 @@ export default function EditAndSaveButton(props) {
 	} else {
 		return (
 			<div>
-				<input type="submit" value="Save" onClick={props.toggleView}></input>
+				<input
+					type="submit"
+					value="Save"
+					onClick={props.wrapperFunction}
+				></input>
 				<input
 					type="button"
 					onClick={props.addSection}
