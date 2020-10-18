@@ -16,7 +16,7 @@ export default class Experience extends React.Component {
 					tasks: "",
 				},
 			],
-			formView: true,
+			formView: false,
 		};
 		this.addJob = this.addJob.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -62,17 +62,25 @@ export default class Experience extends React.Component {
 		this.setState({
 			formView: !this.state.formView,
 		});
-		console.log("toggleCLicked");
 	}
 
 	handleSubmit(e) {
-		console.log("form submit button was clicked");
+		const { experienceData } = this.state;
+		localStorage.setItem("experienceData", JSON.stringify(experienceData));
 		e.preventDefault();
 	}
 	wrapperFunction(e) {
 		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
 		this.toggleView();
 		this.handleSubmit(e);
+	}
+
+	componentDidMount() {
+		let experienceData = JSON.parse(localStorage.getItem("experienceData"));
+		if (experienceData === null) {
+			experienceData = this.state.experienceData;
+		}
+		this.setState({ experienceData });
 	}
 
 	render() {
@@ -87,7 +95,7 @@ export default class Experience extends React.Component {
 				handleChange={this.handleChange}
 			/>
 		));
-
+		console.log(this.state.formView);
 		return (
 			<main id="experienceFormContainer">
 				<h1>

@@ -16,7 +16,7 @@ export default class Education extends React.Component {
 					yearOfGraduation: "",
 				},
 			],
-			formView: true,
+			formView: false,
 		};
 		this.addEducation = this.addEducation.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -61,13 +61,23 @@ export default class Education extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log(e); //probably some local storage thing here
+		const { educationData } = this.state;
+		localStorage.setItem("educationData", JSON.stringify(educationData));
+		e.preventDefault();
 		e.preventDefault();
 	}
 	wrapperFunction(e) {
 		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
 		this.toggleView();
 		this.handleSubmit(e);
+	}
+	componentDidMount() {
+		let educationData = JSON.parse(localStorage.getItem("educationData"));
+		if (educationData === null) {
+			educationData = this.state.educationData;
+		}
+
+		this.setState({ educationData });
 	}
 	render() {
 		const educationRendering = this.state.educationData.map((education, i) => (

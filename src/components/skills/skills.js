@@ -11,7 +11,7 @@ export default class Skills extends React.Component {
 					skill: "",
 				},
 			],
-			formView: true,
+			formView: false,
 		};
 		this.addSkill = this.addSkill.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -51,7 +51,8 @@ export default class Skills extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log(e); //probably some local storage thing here
+		const { skillsData } = this.state;
+		localStorage.setItem("skillsData", JSON.stringify(skillsData));
 		e.preventDefault();
 	}
 
@@ -59,6 +60,13 @@ export default class Skills extends React.Component {
 		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
 		this.toggleView();
 		this.handleSubmit(e);
+	}
+	componentDidMount() {
+		let skillsData = JSON.parse(localStorage.getItem("skillsData"));
+		if (skillsData === null) {
+			skillsData = this.state.skillsData;
+		}
+		this.setState({ skillsData });
 	}
 
 	render() {
