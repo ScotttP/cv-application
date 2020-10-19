@@ -25,7 +25,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					</div>
 					<div>
 						<h2>Tasks</h2>
-						<p>{this.props.data.tasks}</p>
+						<p>{this.props.data.content}</p>
 					</div>
 				</div>
 			);
@@ -83,6 +83,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							onChange={this.props.handleChange}
 						></input>
 					</label>
+
 					<label>
 						Tasks
 						<textarea

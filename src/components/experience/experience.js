@@ -13,7 +13,7 @@ export default class Experience extends React.Component {
 					roleTitle: "",
 					startDate: "",
 					endDate: "",
-					tasks: "",
+					content: "",
 				},
 			],
 			formView: false,
@@ -21,6 +21,7 @@ export default class Experience extends React.Component {
 		this.addJob = this.addJob.bind(this);
 		this.toggleView = this.toggleView.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.wrapperFunction = this.wrapperFunction.bind(this);
 	}
@@ -35,7 +36,7 @@ export default class Experience extends React.Component {
 					roleTitle: "",
 					startDate: "",
 					endDate: "",
-					tasks: "",
+					content: "",
 				},
 			],
 		});
@@ -95,7 +96,6 @@ export default class Experience extends React.Component {
 				handleChange={this.handleChange}
 			/>
 		));
-		console.log(this.state.formView);
 		return (
 			<main id="experienceFormContainer">
 				<h1>

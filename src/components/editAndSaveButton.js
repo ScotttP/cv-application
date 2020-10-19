@@ -6,7 +6,7 @@ export default function EditAndSaveButton(props) {
 		);
 	} else if (props.section === "generalInfo") {
 		return (
-			<input type="submit" value="Save" onClick={props.toggleView}></input>
+			<input type="submit" value="Save" onClick={props.wrapperFunction}></input>
 		);
 	} else {
 		return (

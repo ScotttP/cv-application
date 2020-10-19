@@ -7,7 +7,7 @@ export default class GeneralInformation extends React.Component {
 		this.state = {
 			name: "John Smith",
 			phone: "555-555-5555",
-			formView: true,
+			formView: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -25,7 +25,9 @@ export default class GeneralInformation extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		console.log(e); //probably some local storage thing here
+		const { name, phone } = this.state;
+		localStorage.setItem("name", JSON.stringify(name));
+		localStorage.setItem("phone", JSON.stringify(phone));
 		e.preventDefault();
 	}
 
@@ -34,32 +36,43 @@ export default class GeneralInformation extends React.Component {
 		this.toggleView();
 		this.handleSubmit(e);
 	}
+	componentDidMount() {
+		let name = JSON.parse(localStorage.getItem("name"));
+		let phone = JSON.parse(localStorage.getItem("phone"));
+		if (name === null || phone === null) {
+			name = this.state.name;
+			phone = this.state.phone;
+		}
+		this.setState({ name, phone });
+	}
 	render() {
 		if (this.state.formView === false) {
 			return (
-				<aside id="generalInfoContainer">
-					<img
-						src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-						alt="profilePic"
-						width="200"
-						height="200"
-					></img>
-					<h1>{this.state.name}</h1>
-					<h3>{this.state.phone}</h3>
-					<div id="professionalContactContainer">
-						<ul id="listContainer">
-							<li>linkedIn (icons)</li>
-							<li>Github (icons)</li>
-							<li>Email (icons)</li>
-						</ul>
-					</div>
-					<EditAndSaveButton
-						section="generalInfo"
-						view={this.state.formView}
-						toggleView={this.toggleView}
-						wrapperFunction={this.wrapperFunction}
-					/>
-				</aside>
+				<form>
+					<aside id="generalInfoContainer">
+						<img
+							src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+							alt="profilePic"
+							width="200"
+							height="200"
+						></img>
+						<h1>Name: {this.state.name}</h1>
+						<h3>Phone: {this.state.phone}</h3>
+						<div id="professionalContactContainer">
+							<ul id="listContainer">
+								<li>linkedIn (icons)</li>
+								<li>Github (icons)</li>
+								<li>Email (icons)</li>
+							</ul>
+						</div>
+						<EditAndSaveButton
+							section="generalInfo"
+							view={this.state.formView}
+							toggleView={this.toggleView}
+							wrapperFunction={this.wrapperFunction}
+						/>
+					</aside>
+				</form>
 			);
 		} else {
 			return (
@@ -70,7 +83,7 @@ export default class GeneralInformation extends React.Component {
 						width="200"
 						height="200"
 					></img>
-					<form id="generalInfoForm">
+					<form id="generalInfoForm" onSubmit={this.handleSubmit}>
 						<input
 							name="name"
 							type="text"
@@ -96,6 +109,7 @@ export default class GeneralInformation extends React.Component {
 							section="generalInfo"
 							view={this.state.formView}
 							toggleView={this.toggleView}
+							wrapperFunction={this.wrapperFunction}
 						/>
 					</form>
 				</aside>
