@@ -105,6 +105,7 @@ export default class Experience extends React.Component {
 				<form id="experienceForm" onSubmit={this.handleSubmit}>
 					{jobRendering}
 					<EditAndSaveButton
+						section="experience"
 						view={this.state.formView}
 						toggleView={this.toggleView}
 						addSection={this.addJob}

@@ -2,24 +2,39 @@ import React from "react";
 export default function EditAndSaveButton(props) {
 	if (props.view === false) {
 		return (
-			<input type="button" value="Edit" onClick={props.wrapperFunction}></input>
+			<input
+				className="editButtons"
+				id={props.section + "EditButton"}
+				type="button"
+				value="Edit"
+				onClick={props.wrapperFunction}
+			></input>
 		);
 	} else if (props.section === "generalInfo") {
 		return (
-			<input type="submit" value="Save" onClick={props.wrapperFunction}></input>
+			<input
+				className="saveButtons"
+				id={props.section + "SaveButton"}
+				type="submit"
+				value="Save"
+				onClick={props.wrapperFunction}
+			></input>
 		);
 	} else {
 		return (
 			<div>
 				<input
+					className="saveButtons"
+					id={props.section + "SaveButton"}
 					type="submit"
 					value="Save"
 					onClick={props.wrapperFunction}
 				></input>
 				<input
+					className="addEntryButton"
+					id={props.section + "AddSectionButton"}
 					type="button"
 					onClick={props.addSection}
-					className="addEntryButton"
 					value="+"
 				></input>
 			</div>

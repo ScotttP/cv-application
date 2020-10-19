@@ -90,6 +90,7 @@ export default class Skills extends React.Component {
 				<form id="skillsForm" onSubmit={this.handleSubmit}>
 					{skillsRendering}
 					<EditAndSaveButton
+						section="skills"
 						view={this.state.formView}
 						toggleView={this.toggleView}
 						addSection={this.addSkill}

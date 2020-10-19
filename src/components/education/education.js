@@ -100,6 +100,7 @@ export default class Education extends React.Component {
 				<form id="educationForm" onSubmit={this.handleSubmit}>
 					{educationRendering}
 					<EditAndSaveButton
+						section="education"
 						view={this.state.formView}
 						toggleView={this.toggleView}
 						addSection={this.addEducation}
