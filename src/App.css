@@ -1,1 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+html {
+	height: 100%;
+	background-color: #e3e3e3;
+}
+#appContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#generalInfoContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 10%;
+	width: 75%;
+}
+#experienceFormContainer,
+#generalInfoContainer,
+#educationFormContainer,
+#skillsFormContainer {
+	background-color: white;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 5px 8px 0 rgba(0, 0, 0, 0.14),
+		0 1px 14px 0 rgba(0, 0, 0, 0.12);
+	margin: 5%;
+}
+#profilePicture {
+	border-radius: 100px;
+	box-shadow: 0px 2px 18px 1px rgba(82, 82, 82, 1);
+	margin: 10%;
+}
+#headerContainer {
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+}
+#nameHeader,
+#phoneHeader,
+#nameInput,
+#phoneInput {
+	margin: 2%;
+	width: 100%;
+}
 
+#nameHeader,
+#phoneHeader {
+	text-align: center;
+}
+
+.icons {
+	margin: 4px;
+}
+.icons:hover {
+	cursor: pointer;
+}
+.editButtons {
+	margin: 2%;
+	width: 20%;
+	border-radius: 12px;
+	background-color: white;
+	border: 2px #5068a9 solid;
+	color: #5068a9;
+	transition: 350ms;
+}
+.editButtons:hover {
+	background-color: #5068a9;
+	color: white;
+	border: 2px #303f68 solid;
+	cursor: pointer;
+}
+#generalInfoForm {
+	text-align: center;
+}
+.saveButtons {
+	margin: 2%;
+	width: 40%;
+	border-radius: 12px;
+	background-color: white;
+	border: 2px #689f38 solid;
+	color: #689f38;
+	transition: 350ms;
+}
+.saveButtons:hover {
+	background-color: #689f38;
+	border: 2px #304919 solid;
+	color: white;
+	cursor: pointer;
+}

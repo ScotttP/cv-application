@@ -10,9 +10,11 @@ export default class App extends React.Component {
 		return (
 			<div id="appContainer">
 				<GeneralInformation />
-				<Experience />
-				<Education />
-				<Skills />
+				<div id="mainContainer">
+					<Experience />
+					<Education />
+					<Skills />
+				</div>
 			</div>
 		);
 	}

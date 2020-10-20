@@ -8,7 +8,7 @@ export default class GeneralInformation extends React.Component {
 		this.state = {
 			name: "John Smith",
 			phone: "555-555-5555",
-			formView: false,
+			formView: true,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -57,8 +57,10 @@ export default class GeneralInformation extends React.Component {
 						width="200"
 						height="200"
 					></img>
-					<h1 id="nameHeader">Name: {this.state.name}</h1>
-					<h3 id="phoneHeader">Phone: {this.state.phone}</h3>
+					<div id="headerContainer">
+						<h1 id="nameHeader">{this.state.name}</h1>
+						<h3 id="phoneHeader">{this.state.phone}</h3>
+					</div>
 					<LinksInformation />
 					<EditAndSaveButton
 						section="generalInfo"
@@ -72,45 +74,46 @@ export default class GeneralInformation extends React.Component {
 			return (
 				<aside id="generalInfoContainer">
 					<img
+						id="profilePicture"
 						src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
 						alt="profilePic"
 						width="200"
 						height="200"
 					></img>
-					<form id="generalInfoForm" onSubmit={this.handleSubmit}>
-						<label>
-							Name:
-							<input
-								className="inputFields"
-								id="nameInput"
-								name="name"
-								type="text"
-								value={this.state.name}
-								onChange={this.handleChange}
-								placeholder="John Smith"
-							></input>
-						</label>
-						<label>
-							Phone:
-							<input
-								className="inputFields"
-								id="phoneInput"
-								name="phone"
-								type="text"
-								value={this.state.phone}
-								onChange={this.handleChange}
-								placeholder="555-555-5555"
-							></input>
-						</label>
-
-						<LinksInformation />
-						<EditAndSaveButton
-							section="generalInfo"
-							view={this.state.formView}
-							toggleView={this.toggleView}
-							wrapperFunction={this.wrapperFunction}
-						/>
-					</form>
+					<div id="headerContainer">
+						<form id="generalInfoForm" onSubmit={this.handleSubmit}>
+							<label>
+								<input
+									className="inputFields"
+									id="nameInput"
+									name="name"
+									type="text"
+									value={this.state.name}
+									onChange={this.handleChange}
+									placeholder="John Smith"
+								></input>
+							</label>
+							<br></br>
+							<label>
+								<input
+									className="inputFields"
+									id="phoneInput"
+									name="phone"
+									type="text"
+									value={this.state.phone}
+									onChange={this.handleChange}
+									placeholder="555-555-5555"
+								></input>
+							</label>
+							<br></br>
+							<EditAndSaveButton
+								section="generalInfo"
+								view={this.state.formView}
+								toggleView={this.toggleView}
+								wrapperFunction={this.wrapperFunction}
+							/>
+						</form>
+					</div>
 				</aside>
 			);
 		}
