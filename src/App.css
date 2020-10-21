@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
 * {
 	margin: 0;
 	padding: 0;
@@ -15,6 +15,7 @@ html {
 	justify-content: center;
 	align-items: center;
 }
+/* GENERAL INFO COMPONENT */
 #generalInfoContainer {
 	display: flex;
 	flex-direction: column;
@@ -94,6 +95,54 @@ html {
 	color: white;
 	cursor: pointer;
 }
+/* EXPERIENCE COMPONENT */
+.companyNameAndLocation {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+.roleTitleAndDates {
+	display: flex;
+	justify-content: space-between;
+}
 .tasksText {
 	white-space: pre-wrap;
+}
+#mainContainer {
+	width: 100%;
+}
+#experienceFormContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+#experienceForm {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.experienceFormContent {
+	width: 100%;
+	padding: 5%;
+}
+#experienceHeader {
+	margin: 2%;
+}
+#dateWrap {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+}
+.roleTitle {
+	width: 100%;
+}
+.tasks {
+	margin: 3%;
+}
+.textForm {
+	width: 305px;
+	height: 315px;
 }

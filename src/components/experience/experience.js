@@ -98,7 +98,7 @@ export default class Experience extends React.Component {
 		));
 		return (
 			<main id="experienceFormContainer">
-				<h1>
+				<h1 id="experienceHeader">
 					<u>Experience</u>
 				</h1>
 

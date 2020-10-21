@@ -2,39 +2,37 @@ import React from "react";
 
 export default class ExperienceFormAndDisplay extends React.Component {
 	render() {
+		let startDate = new Date(this.props.data.startDate).toLocaleDateString(
+			"en-US"
+		);
+		let endDate = new Date(this.props.data.endDate).toLocaleDateString("en-US");
+
 		if (this.props.view === false) {
 			return (
-				<div id={this.props.index}>
-					<div>
-						<h2>Company Name:</h2>
-						<p>{this.props.data.companyName}</p>
-					</div>
-					<div>
-						<h2>Location:</h2>
+				<div id={this.props.index} className="experienceFormContent">
+					<div className="companyNameAndLocation">
+						<p>
+							<b>{this.props.data.companyName}</b>
+						</p>
 						<p>{this.props.data.location}</p>
 					</div>
-					<div>
-						<h2>Role Title:</h2>
-						<p>{this.props.data.roleTitle}</p>
+					<div className="roleTitleAndDates">
+						<p className="roleTitle">{this.props.data.roleTitle}</p>
+						<div id="dateWrap">
+							<p id="startDate">{startDate}</p>
+							<span>-</span>
+							<p>{endDate}</p>
+						</div>
 					</div>
-					<div>
-						<h2>
-							Start Date: <p>{this.props.data.startDate}</p>
-						</h2>
-
-						<h2>
-							End Date: <p>{this.props.data.endDate}</p>
-						</h2>
-					</div>
-					<div>
-						<h2>Tasks</h2>
+					<div className="tasks">
+						<p>Tasks</p>
 						<p className="tasksText">{this.props.data.tasks}</p>
 					</div>
 				</div>
 			);
 		} else {
 			return (
-				<div id={this.props.id}>
+				<div id={this.props.id} className="experienceFormContent">
 					<label>
 						Company Name:
 						<input
@@ -46,6 +44,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							placeholder="ABC Company"
 						></input>
 					</label>
+					<br></br>
 					<label>
 						Location:
 						<input
@@ -57,6 +56,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							placeholder="New York City, NY"
 						></input>
 					</label>
+					<br></br>
 					<label>
 						Role Title:
 						<input
@@ -68,6 +68,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							placeholder="Software Developer"
 						></input>
 					</label>
+					<br></br>
 					<label>
 						Start Date:
 						<input
@@ -77,6 +78,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							value={this.props.data.startDate}
 							onChange={this.props.handleChange}
 						></input>
+						<br></br>
 						End Date:
 						<input
 							name="endDate"
@@ -86,10 +88,12 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							onChange={this.props.handleChange}
 						></input>
 					</label>
-
+					<br></br>
 					<label>
 						Tasks
 						<textarea
+							rows="10"
+							cols="50"
 							name="tasks"
 							type="text"
 							id={`tasks${this.props.index}`}
