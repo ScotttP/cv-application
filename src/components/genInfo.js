@@ -8,7 +8,7 @@ export default class GeneralInformation extends React.Component {
 		this.state = {
 			name: "John Smith",
 			phone: "555-555-5555",
-			formView: true,
+			formView: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.toggleView = this.toggleView.bind(this);

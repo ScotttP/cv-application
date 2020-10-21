@@ -13,7 +13,7 @@ export default class Experience extends React.Component {
 					roleTitle: "",
 					startDate: "",
 					endDate: "",
-					content: "",
+					tasks: "",
 				},
 			],
 			formView: false,
@@ -36,7 +36,7 @@ export default class Experience extends React.Component {
 					roleTitle: "",
 					startDate: "",
 					endDate: "",
-					content: "",
+					tasks: "",
 				},
 			],
 		});

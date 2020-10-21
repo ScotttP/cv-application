@@ -94,3 +94,6 @@ html {
 	color: white;
 	cursor: pointer;
 }
+.tasksText {
+	white-space: pre-wrap;
+}

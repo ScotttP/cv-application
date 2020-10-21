@@ -18,14 +18,17 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						<p>{this.props.data.roleTitle}</p>
 					</div>
 					<div>
-						<h2>Start Date:</h2>
-						<p>{this.props.data.startDate}</p>
-						<h2>End Date:</h2>
-						<p>{this.props.data.endDate}</p>
+						<h2>
+							Start Date: <p>{this.props.data.startDate}</p>
+						</h2>
+
+						<h2>
+							End Date: <p>{this.props.data.endDate}</p>
+						</h2>
 					</div>
 					<div>
 						<h2>Tasks</h2>
-						<p>{this.props.data.content}</p>
+						<p className="tasksText">{this.props.data.tasks}</p>
 					</div>
 				</div>
 			);
