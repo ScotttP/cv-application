@@ -33,8 +33,8 @@ export default class ExperienceFormAndDisplay extends React.Component {
 		} else {
 			return (
 				<div id={this.props.id} className="experienceFormContent">
-					<label>
-						Company Name:
+					<label className="formLabels">
+						<h4>Company Name:</h4>
 						<input
 							name="companyName"
 							type="text"
@@ -45,8 +45,8 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<br></br>
-					<label>
-						Location:
+					<label className="formLabels">
+						<h4>Location:</h4>
 						<input
 							name="location"
 							type="text"
@@ -57,8 +57,8 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<br></br>
-					<label>
-						Role Title:
+					<label className="formLabels">
+						<h4>Role Title: </h4>
 						<input
 							name="roleTitle"
 							type="text"
@@ -69,8 +69,8 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<br></br>
-					<label>
-						Start Date:
+					<label className="formLabels">
+						<h4>Start Date: </h4>
 						<input
 							name="startDate"
 							type="Date"
@@ -78,8 +78,10 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							value={this.props.data.startDate}
 							onChange={this.props.handleChange}
 						></input>
-						<br></br>
-						End Date:
+					</label>
+					<br></br>
+					<label className="formLabels">
+						<h4>End Date:</h4>
 						<input
 							name="endDate"
 							type="Date"
@@ -93,7 +95,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						Tasks
 						<textarea
 							rows="10"
-							cols="50"
+							cols="49"
 							name="tasks"
 							type="text"
 							id={`tasks${this.props.index}`}
@@ -102,12 +104,15 @@ export default class ExperienceFormAndDisplay extends React.Component {
 							placeholder="Enter Tasks Here"
 						></textarea>
 					</label>
-					<button
-						id={`deleteJobAtIndex${this.props.index}`}
-						onClick={(e) => this.props.deleteJobOnClick(e)}
-					>
-						x
-					</button>
+					<div className="deleteButtonContainer">
+						<button
+							className="deleteButtons"
+							id={`deleteJobAtIndex${this.props.index}`}
+							onClick={(e) => this.props.deleteJobOnClick(e)}
+						>
+							x
+						</button>
+					</div>
 				</div>
 			);
 		}

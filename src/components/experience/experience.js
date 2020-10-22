@@ -16,7 +16,7 @@ export default class Experience extends React.Component {
 					tasks: "",
 				},
 			],
-			formView: false,
+			formView: true,
 		};
 		this.addJob = this.addJob.bind(this);
 		this.toggleView = this.toggleView.bind(this);

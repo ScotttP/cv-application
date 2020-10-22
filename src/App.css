@@ -21,8 +21,7 @@ html {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: 10%;
-	width: 75%;
+	width: 90%;
 }
 #experienceFormContainer,
 #generalInfoContainer,
@@ -82,7 +81,9 @@ html {
 }
 .saveButtons {
 	margin: 2%;
-	width: 40%;
+	width: 20%;
+	min-width: 60px;
+	height: 24px;
 	border-radius: 12px;
 	background-color: white;
 	border: 2px #689f38 solid;
@@ -126,7 +127,8 @@ html {
 }
 .experienceFormContent {
 	width: 100%;
-	padding: 5%;
+	padding: 2% 5%;
+	border-bottom: 3px solid #e3e3e3;
 }
 #experienceHeader {
 	margin: 2%;
@@ -145,4 +147,31 @@ html {
 .textForm {
 	width: 305px;
 	height: 315px;
+}
+.formLabels {
+	display: flex;
+	justify-content: space-between;
+}
+.deleteButtonContainer {
+	text-align: center;
+}
+.deleteButtons {
+	background-color: white;
+	color: #d45a5a;
+	border: 2px #d45a5a solid;
+	width: 10%;
+	text-align: center;
+	border-radius: 15px;
+}
+.saveAndAddButtonContainer {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.addEntryButton {
+	width: 20%;
+	border-radius: 15px;
+	background-color: white;
+	border: 2px black solid;
 }

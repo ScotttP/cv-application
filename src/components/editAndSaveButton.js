@@ -22,7 +22,7 @@ export default function EditAndSaveButton(props) {
 		);
 	} else {
 		return (
-			<div>
+			<div className="saveAndAddButtonContainer">
 				<input
 					className="saveButtons"
 					id={props.section + "SaveButton"}
