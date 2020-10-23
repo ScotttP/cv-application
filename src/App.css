@@ -97,7 +97,8 @@ html {
 	cursor: pointer;
 }
 /* EXPERIENCE COMPONENT */
-.companyNameAndLocation {
+.companyNameAndLocation,
+.institutionNameAndGraduation {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
@@ -112,25 +113,28 @@ html {
 #mainContainer {
 	width: 100%;
 }
-#experienceFormContainer {
+#experienceFormContainer,
+#educationFormContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
-#experienceForm {
+#experienceForm,
+#educationForm {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 }
-.experienceFormContent {
+.experienceFormContent,
+.educationFormContent {
 	width: 100%;
-	padding: 2% 5%;
+	padding: 4% 5% 2% 5%;
 	border-bottom: 3px solid #e3e3e3;
 }
-#experienceHeader {
+.sectionHeaders {
 	margin: 2%;
 }
 #dateWrap {
@@ -174,4 +178,15 @@ html {
 	border-radius: 15px;
 	background-color: white;
 	border: 2px black solid;
+}
+.formInputs {
+	border: 1px solid #b1b1b1;
+	border-radius: 10px;
+	width: 10rem;
+	height: 2rem;
+	padding: 3px;
+}
+textarea {
+	border: 1px solid #b1b1b1;
+	border-radius: 10px;
 }

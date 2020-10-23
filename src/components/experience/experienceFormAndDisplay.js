@@ -36,6 +36,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					<label className="formLabels">
 						<h4>Company Name:</h4>
 						<input
+							className="formInputs"
 							name="companyName"
 							type="text"
 							id={`companyName${this.props.index}`}
@@ -48,6 +49,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					<label className="formLabels">
 						<h4>Location:</h4>
 						<input
+							className="formInputs"
 							name="location"
 							type="text"
 							id={`location${this.props.index}`}
@@ -60,6 +62,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					<label className="formLabels">
 						<h4>Role Title: </h4>
 						<input
+							className="formInputs"
 							name="roleTitle"
 							type="text"
 							id={`roleTitle${this.props.index}`}
@@ -72,6 +75,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					<label className="formLabels">
 						<h4>Start Date: </h4>
 						<input
+							className="formInputs"
 							name="startDate"
 							type="Date"
 							id={`startDate${this.props.index}`}
@@ -83,6 +87,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					<label className="formLabels">
 						<h4>End Date:</h4>
 						<input
+							className="formInputs"
 							name="endDate"
 							type="Date"
 							id={`endDate${this.props.index}`}

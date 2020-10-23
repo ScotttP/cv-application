@@ -93,7 +93,7 @@ export default class Education extends React.Component {
 		));
 		return (
 			<main id="educationFormContainer">
-				<h1>
+				<h1 className="sectionHeaders">
 					<u>Education</u>
 				</h1>
 

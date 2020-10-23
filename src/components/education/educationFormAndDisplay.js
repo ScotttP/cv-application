@@ -4,36 +4,33 @@ export default class EducationFormAndDisplay extends React.Component {
 	render() {
 		if (this.props.view === false) {
 			return (
-				<div id={this.props.index}>
-					<div>
-						<h2>Name of Institution:</h2>
-						<p>{this.props.data.institutionName}</p>
+				<div id={this.props.index} className="educationFormContent">
+					<div className="institutionNameAndGraduation">
+						<p>
+							<b>{this.props.data.institutionName}</b>
+						</p>
+						<p>{this.props.data.yearOfGraduation}</p>
 					</div>
+
 					<div>
-						<h2>Major:</h2>
+						<b>Major:</b>
 						<p>{this.props.data.major}</p>
 					</div>
 					<div>
-						<h2>Minor:</h2>
+						<b>Minor:</b>
 						<p>{this.props.data.minor}</p>
 					</div>
 					<div>
-						<h2>Degree:</h2>
 						<p>{this.props.data.degreeType}</p>
 					</div>
 					<div>
-						<h2>GPA:</h2>
 						<p>{this.props.data.gpa}</p>
-					</div>
-					<div>
-						<h2>Year Of Graduation:</h2>
-						<p>{this.props.data.yearOfGraduation}</p>
 					</div>
 				</div>
 			);
 		} else {
 			return (
-				<div id={this.props.id}>
+				<div id={this.props.id} className="educationFormContent">
 					<label>
 						Name of Institution:
 						<input
@@ -43,6 +40,17 @@ export default class EducationFormAndDisplay extends React.Component {
 							value={this.props.data.institutionName}
 							onChange={this.props.handleChange}
 							placeholder="State University"
+						></input>
+					</label>
+					<label>
+						Year Of Graduation:
+						<input
+							name="yearOfGraduation"
+							type="text"
+							id={`yearOfGraduation${this.props.index}`}
+							value={this.props.data.yearOfGraduation}
+							onChange={this.props.handleChange}
+							placeholder="2020"
 						></input>
 					</label>
 					<label>
@@ -79,16 +87,17 @@ export default class EducationFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<label>
-						Year Of Graduation:
+						GPA
 						<input
-							name="yearOfGraduation"
+							name="gpa"
 							type="text"
-							id={`yearOfGraduation${this.props.index}`}
-							value={this.props.data.yearOfGraduation}
+							id={`gpa${this.props.index}`}
+							value={this.props.data.gpa}
 							onChange={this.props.handleChange}
-							placeholder="2020"
+							placeholder="3.75"
 						></input>
 					</label>
+
 					<button
 						id={`deleteEducationAtIndex${this.props.index}`}
 						onClick={(e) => this.props.deleteEducationOnClick(e)}

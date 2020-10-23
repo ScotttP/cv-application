@@ -16,7 +16,7 @@ export default class Experience extends React.Component {
 					tasks: "",
 				},
 			],
-			formView: true,
+			formView: false,
 		};
 		this.addJob = this.addJob.bind(this);
 		this.toggleView = this.toggleView.bind(this);
@@ -98,7 +98,7 @@ export default class Experience extends React.Component {
 		));
 		return (
 			<main id="experienceFormContainer">
-				<h1 id="experienceHeader">
+				<h1 className="sectionHeaders">
 					<u>Experience</u>
 				</h1>
 
