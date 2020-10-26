@@ -4,7 +4,7 @@ export default class SkillsFormAndDisplay extends React.Component {
 	render() {
 		if (this.props.view === false) {
 			return (
-				<div id={this.props.index}>
+				<div id={this.props.index} className="skillsFormContent">
 					<div>
 						<p>{this.props.data.skill}</p>
 					</div>
@@ -12,9 +12,10 @@ export default class SkillsFormAndDisplay extends React.Component {
 			);
 		} else {
 			return (
-				<div id={this.props.id}>
-					<label>
+				<div id={this.props.id} className="skillsFormContent">
+					<label className="formLabels">
 						<input
+							className="formInputs"
 							name="skill"
 							type="text"
 							id={`skill${this.props.index}`}
@@ -24,6 +25,7 @@ export default class SkillsFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<input
+						className="deleteButtons"
 						id={`deleteSkillAtIndex${this.props.index}`}
 						onClick={(e) => this.props.deleteSkillOnClick(e)}
 						value="x"

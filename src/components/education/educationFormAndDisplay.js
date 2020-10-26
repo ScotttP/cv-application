@@ -20,20 +20,19 @@ export default class EducationFormAndDisplay extends React.Component {
 						<b>Minor:</b>
 						<p>{this.props.data.minor}</p>
 					</div>
-					<div>
+					<div className="degreeTypeAndGPA">
 						<p>{this.props.data.degreeType}</p>
-					</div>
-					<div>
-						<p>{this.props.data.gpa}</p>
+						<p>{this.props.data.gpa} GPA</p>
 					</div>
 				</div>
 			);
 		} else {
 			return (
 				<div id={this.props.id} className="educationFormContent">
-					<label>
-						Name of Institution:
+					<label className="formLabels">
+						Institution:
 						<input
+							className="formInputs"
 							name="institutionName"
 							type="text"
 							id={`institutionName${this.props.index}`}
@@ -42,9 +41,11 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="State University"
 						></input>
 					</label>
-					<label>
-						Year Of Graduation:
+					<br></br>
+					<label className="formLabels">
+						Graduation Year:
 						<input
+							className="formInputs"
 							name="yearOfGraduation"
 							type="text"
 							id={`yearOfGraduation${this.props.index}`}
@@ -53,9 +54,11 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="2020"
 						></input>
 					</label>
-					<label>
+					<br></br>
+					<label className="formLabels">
 						Major:
 						<input
+							className="formInputs"
 							name="major"
 							type="text"
 							id={`major${this.props.index}`}
@@ -64,9 +67,11 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="Computer Science"
 						></input>
 					</label>
-					<label>
+					<br></br>
+					<label className="formLabels">
 						Minor:
 						<input
+							className="formInputs"
 							name="minor"
 							type="text"
 							id={`minor${this.props.index}`}
@@ -75,9 +80,11 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="Mathematics"
 						></input>
 					</label>
-					<label>
+					<br></br>
+					<label className="formLabels">
 						Degree Type:
 						<input
+							className="formInputs"
 							name="degreeType"
 							type="text"
 							id={`degreeType${this.props.index}`}
@@ -86,9 +93,11 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="Bachelor's"
 						></input>
 					</label>
-					<label>
-						GPA
+					<br></br>
+					<label className="formLabels">
+						GPA:
 						<input
+							className="formInputs"
 							name="gpa"
 							type="text"
 							id={`gpa${this.props.index}`}
@@ -97,13 +106,16 @@ export default class EducationFormAndDisplay extends React.Component {
 							placeholder="3.75"
 						></input>
 					</label>
-
-					<button
-						id={`deleteEducationAtIndex${this.props.index}`}
-						onClick={(e) => this.props.deleteEducationOnClick(e)}
-					>
-						x
-					</button>
+					<br></br>
+					<div className="deleteButtonContainer">
+						<button
+							className="deleteButtons"
+							id={`deleteEducationAtIndex${this.props.index}`}
+							onClick={(e) => this.props.deleteEducationOnClick(e)}
+						>
+							x
+						</button>
+					</div>
 				</div>
 			);
 		}

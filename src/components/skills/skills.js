@@ -83,7 +83,7 @@ export default class Skills extends React.Component {
 		));
 		return (
 			<main id="skillsFormContainer">
-				<h1>
+				<h1 className="sectionHeaders">
 					<u>Skills</u>
 				</h1>
 

@@ -114,14 +114,16 @@ html {
 	width: 100%;
 }
 #experienceFormContainer,
-#educationFormContainer {
+#educationFormContainer,
+#skillsFormContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 #experienceForm,
-#educationForm {
+#educationForm,
+#skillsForm {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -129,10 +131,15 @@ html {
 	width: 100%;
 }
 .experienceFormContent,
-.educationFormContent {
+.educationFormContent,
+.skillsFormContent {
 	width: 100%;
 	padding: 4% 5% 2% 5%;
 	border-bottom: 3px solid #e3e3e3;
+}
+.skillsFormContent {
+	display: flex;
+	justify-content: space-between;
 }
 .sectionHeaders {
 	margin: 2%;
@@ -189,4 +196,10 @@ html {
 textarea {
 	border: 1px solid #b1b1b1;
 	border-radius: 10px;
+}
+.degreeTypeAndGPA {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
 }
