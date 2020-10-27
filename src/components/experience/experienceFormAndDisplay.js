@@ -25,7 +25,9 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						</div>
 					</div>
 					<div className="tasks">
-						<p>Tasks</p>
+						<h4>
+							<u>Tasks:</u>
+						</h4>
 						<p className="tasksText">{this.props.data.tasks}</p>
 					</div>
 				</div>
@@ -97,10 +99,10 @@ export default class ExperienceFormAndDisplay extends React.Component {
 					</label>
 					<br></br>
 					<label>
-						Tasks
+						<h4>
+							<u>Tasks:</u>
+						</h4>
 						<textarea
-							rows="10"
-							cols="49"
 							name="tasks"
 							type="text"
 							id={`tasks${this.props.index}`}

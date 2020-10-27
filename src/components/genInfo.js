@@ -6,7 +6,7 @@ export default class GeneralInformation extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "John Smith",
+			name: "Scott Pribe",
 			phone: "555-555-5555",
 			formView: false,
 		};
@@ -84,7 +84,7 @@ export default class GeneralInformation extends React.Component {
 						<form id="generalInfoForm" onSubmit={this.handleSubmit}>
 							<label>
 								<input
-									className="inputFields"
+									className="formInputs"
 									id="nameInput"
 									name="name"
 									type="text"
@@ -96,7 +96,7 @@ export default class GeneralInformation extends React.Component {
 							<br></br>
 							<label>
 								<input
-									className="inputFields"
+									className="formInputs"
 									id="phoneInput"
 									name="phone"
 									type="text"

@@ -22,6 +22,7 @@ html {
 	justify-content: center;
 	align-items: center;
 	width: 90%;
+	max-width: 750px;
 }
 #experienceFormContainer,
 #generalInfoContainer,
@@ -64,6 +65,7 @@ html {
 .editButtons {
 	margin: 2%;
 	width: 20%;
+	max-width: 80px;
 	border-radius: 12px;
 	background-color: white;
 	border: 2px #5068a9 solid;
@@ -78,11 +80,16 @@ html {
 }
 #generalInfoForm {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .saveButtons {
 	margin: 2%;
 	width: 20%;
 	min-width: 60px;
+	max-width: 100px;
 	height: 24px;
 	border-radius: 12px;
 	background-color: white;
@@ -153,7 +160,7 @@ html {
 	width: 100%;
 }
 .tasks {
-	margin: 3%;
+	margin: 5%;
 }
 .textForm {
 	width: 305px;
@@ -171,6 +178,8 @@ html {
 	color: #d45a5a;
 	border: 2px #d45a5a solid;
 	width: 10%;
+	max-width: 50px;
+	height: 1.5rem;
 	text-align: center;
 	border-radius: 15px;
 }
@@ -182,6 +191,7 @@ html {
 }
 .addEntryButton {
 	width: 20%;
+	max-width: 100px;
 	border-radius: 15px;
 	background-color: white;
 	border: 2px black solid;
@@ -196,10 +206,47 @@ html {
 textarea {
 	border: 1px solid #b1b1b1;
 	border-radius: 10px;
+	resize: none;
+	height: 12em;
+	width: 100%;
+	padding: 2%;
 }
 .degreeTypeAndGPA {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 10px;
+}
+@media only screen and (max-width: 360px) {
+	.companyNameAndLocation,
+	.institutionNameAndGraduation,
+	.roleTitleAndDates {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.roleTitle,
+	#dateWrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.tasks {
+		margin-top: 15px;
+		text-align: center;
+	}
+}
+
+@media only screen and (min-width: 1110px) {
+	#experienceFormContainer,
+	#generalInfoContainer,
+	#educationFormContainer,
+	#skillsFormContainer {
+		margin: 3% 15% 3% 15%;
+	}
+	.experienceFormContent,
+	.educationFormContent,
+	.skillsFormContent {
+		padding: 2% 12% 2% 12%;
+	}
 }
