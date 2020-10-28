@@ -1,14 +1,11 @@
 import React from "react";
 
-export default function LinksInformation() {
+export default function LinksInformation(props) {
+	console.log(props.urls);
 	return (
 		<div id="professionalContactContainer">
 			<ul id="listContainer">
-				<a
-					href="https://www.linkedin.com/in/scottpribe/"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
+				<a href={props.urls.linkedIn} rel="noopener noreferrer" target="_blank">
 					<img
 						className="icons"
 						id="linkedInIcon"
@@ -17,11 +14,7 @@ export default function LinksInformation() {
 					></img>
 				</a>
 
-				<a
-					href="https://github.com/ScotttP"
-					rel="noopener noreferrer"
-					target="_blank"
-				>
+				<a href={props.urls.github} rel="noopener noreferrer" target="_blank">
 					<img
 						className="icons"
 						id="gitHubIcon"
@@ -30,7 +23,7 @@ export default function LinksInformation() {
 					/>
 				</a>
 				<a
-					href="mailto: scottpribe@gmail.com?subject=Interested In Your Resumé "
+					href={`mailto: ${props.urls.email}?subject=Interested In Your Resumé`}
 					rel="noopener noreferrer"
 					target="_blank"
 				>

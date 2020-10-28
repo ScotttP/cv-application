@@ -8,6 +8,9 @@ export default class GeneralInformation extends React.Component {
 		this.state = {
 			name: "Scott Pribe",
 			phone: "555-555-5555",
+			email: "scottpribe@gmail.com",
+			github: "https://github.com/ScotttP",
+			linkedIn: "https://www.linkedin.com/in/scottpribe/",
 			formView: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
@@ -26,9 +29,12 @@ export default class GeneralInformation extends React.Component {
 		});
 	}
 	handleSubmit(e) {
-		const { name, phone } = this.state;
+		const { name, phone, email, github, linkedIn } = this.state;
 		localStorage.setItem("name", JSON.stringify(name));
 		localStorage.setItem("phone", JSON.stringify(phone));
+		localStorage.setItem("email", JSON.stringify(email));
+		localStorage.setItem("github", JSON.stringify(github));
+		localStorage.setItem("linkedIn", JSON.stringify(linkedIn));
 		e.preventDefault();
 	}
 
@@ -40,11 +46,23 @@ export default class GeneralInformation extends React.Component {
 	componentDidMount() {
 		let name = JSON.parse(localStorage.getItem("name"));
 		let phone = JSON.parse(localStorage.getItem("phone"));
-		if (name === null || phone === null) {
+		let email = JSON.parse(localStorage.getItem("email"));
+		let github = JSON.parse(localStorage.getItem("github"));
+		let linkedIn = JSON.parse(localStorage.getItem("linkedIn"));
+		if (
+			name === null ||
+			phone === null ||
+			email === null ||
+			github === null ||
+			linkedIn === null
+		) {
 			name = this.state.name;
 			phone = this.state.phone;
+			email = this.state.email;
+			github = this.state.github;
+			linkedIn = this.state.linkedIn;
 		}
-		this.setState({ name, phone });
+		this.setState({ name, phone, email, github, linkedIn });
 	}
 	render() {
 		if (this.state.formView === false) {
@@ -61,7 +79,7 @@ export default class GeneralInformation extends React.Component {
 						<h1 id="nameHeader">{this.state.name}</h1>
 						<h3 id="phoneHeader">{this.state.phone}</h3>
 					</div>
-					<LinksInformation />
+					<LinksInformation urls={this.state} />
 					<EditAndSaveButton
 						section="generalInfo"
 						view={this.state.formView}
@@ -83,6 +101,7 @@ export default class GeneralInformation extends React.Component {
 					<div id="headerContainer">
 						<form id="generalInfoForm" onSubmit={this.handleSubmit}>
 							<label>
+								<h4>Name:</h4>
 								<input
 									className="formInputs"
 									id="nameInput"
@@ -95,6 +114,7 @@ export default class GeneralInformation extends React.Component {
 							</label>
 							<br></br>
 							<label>
+								<h4>Phone:</h4>
 								<input
 									className="formInputs"
 									id="phoneInput"
@@ -103,6 +123,45 @@ export default class GeneralInformation extends React.Component {
 									value={this.state.phone}
 									onChange={this.handleChange}
 									placeholder="555-555-5555"
+								></input>
+							</label>
+							<br></br>
+							<label>
+								<h4>Email:</h4>
+								<input
+									className="formInputs"
+									id="emailInput"
+									name="email"
+									type="text"
+									value={this.state.email}
+									onChange={this.handleChange}
+									placeholder="JohnSmith@gmail.com"
+								></input>
+							</label>
+							<br></br>
+							<label>
+								<h4>Github:</h4>
+								<input
+									className="formInputs"
+									id="gitHubInput"
+									name="github"
+									type="text"
+									value={this.state.github}
+									onChange={this.handleChange}
+									placeholder="https://..."
+								></input>
+							</label>
+							<br></br>
+							<label>
+								<h4>LinkedIn:</h4>
+								<input
+									className="formInputs"
+									id="linkedInInput"
+									name="linkedIn "
+									type="text"
+									value={this.state.linkedIn}
+									onChange={this.handleChange}
+									placeholder="https://..."
 								></input>
 							</label>
 							<br></br>
