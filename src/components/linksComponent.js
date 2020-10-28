@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function LinksInformation(props) {
-	console.log(props.urls);
 	return (
 		<div id="professionalContactContainer">
 			<ul id="listContainer">
@@ -33,6 +32,14 @@ export default function LinksInformation(props) {
 						src="https://img.icons8.com/officexs/36/000000/gmail-login.png"
 						alt="Email"
 					/>
+				</a>
+				<a onClick={props.print}>
+					<img
+						className="icons"
+						id="printIcon"
+						src="https://img.icons8.com/windows/36/000000/print-file.png"
+						alt="Print"
+					></img>
 				</a>
 			</ul>
 		</div>

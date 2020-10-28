@@ -25,7 +25,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						</div>
 					</div>
 					<div className="tasks">
-						<h4>
+						<h4 className="tasksHeader">
 							<u>Tasks:</u>
 						</h4>
 						<p className="tasksText">{this.props.data.tasks}</p>

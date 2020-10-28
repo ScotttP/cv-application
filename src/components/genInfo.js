@@ -17,6 +17,7 @@ export default class GeneralInformation extends React.Component {
 		this.toggleView = this.toggleView.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.wrapperFunction = this.wrapperFunction.bind(this);
+		this.print = this.print.bind(this);
 	}
 	handleChange(e) {
 		this.setState({
@@ -27,6 +28,9 @@ export default class GeneralInformation extends React.Component {
 		this.setState({
 			formView: !this.state.formView,
 		});
+	}
+	print() {
+		window.print();
 	}
 	handleSubmit(e) {
 		const { name, phone, email, github, linkedIn } = this.state;
@@ -79,7 +83,7 @@ export default class GeneralInformation extends React.Component {
 						<h1 id="nameHeader">{this.state.name}</h1>
 						<h3 id="phoneHeader">{this.state.phone}</h3>
 					</div>
-					<LinksInformation urls={this.state} />
+					<LinksInformation urls={this.state} print={this.print} />
 					<EditAndSaveButton
 						section="generalInfo"
 						view={this.state.formView}
