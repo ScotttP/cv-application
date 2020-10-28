@@ -36,7 +36,7 @@ html {
 #profilePicture {
 	border-radius: 100px;
 	box-shadow: 0px 2px 18px 1px rgba(82, 82, 82, 1);
-	margin: 10%;
+	margin: 8%;
 }
 #headerContainer {
 	margin: 5px;
@@ -182,6 +182,13 @@ html {
 	height: 1.5rem;
 	text-align: center;
 	border-radius: 15px;
+	transition: 350ms;
+}
+.deleteButtons:hover {
+	background-color: #d45a5a;
+	border: 2px #6d2f2f solid;
+	color: white;
+	cursor: pointer;
 }
 .saveAndAddButtonContainer {
 	width: 100%;
@@ -194,7 +201,14 @@ html {
 	max-width: 100px;
 	border-radius: 15px;
 	background-color: white;
-	border: 2px black solid;
+	border: 2px #312e2e solid;
+	transition: 350ms;
+}
+.addEntryButton:hover {
+	background-color: #312e2e;
+	border: 2px #0a0a0a solid;
+	color: white;
+	cursor: pointer;
 }
 .formInputs {
 	border: 1px solid #b1b1b1;
@@ -210,12 +224,22 @@ textarea {
 	height: 12em;
 	width: 100%;
 	padding: 2%;
+	margin: 2%;
 }
 .degreeTypeAndGPA {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 10px;
+}
+.textAreaFormLabel {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.tasksHeader {
+	width: 100%;
 }
 @media only screen and (max-width: 360px) {
 	.companyNameAndLocation,

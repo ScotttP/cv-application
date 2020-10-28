@@ -8,7 +8,16 @@ export default class Skills extends React.Component {
 		this.state = {
 			skillsData: [
 				{
-					skill: "",
+					skill: "HTML",
+				},
+				{
+					skill: "CSS",
+				},
+				{
+					skill: "Javascript",
+				},
+				{
+					skill: "React",
 				},
 			],
 			formView: false,
@@ -81,6 +90,7 @@ export default class Skills extends React.Component {
 				handleChange={this.handleChange}
 			/>
 		));
+		console.log(this.state.skillsData);
 		return (
 			<main id="skillsFormContainer">
 				<h1 className="sectionHeaders">

@@ -6,7 +6,7 @@ export default class ExperienceFormAndDisplay extends React.Component {
 			"en-US"
 		);
 		let endDate = new Date(this.props.data.endDate).toLocaleDateString("en-US");
-
+		console.log(this.props.data.startDate);
 		if (this.props.view === false) {
 			return (
 				<div id={this.props.index} className="experienceFormContent">
@@ -98,8 +98,8 @@ export default class ExperienceFormAndDisplay extends React.Component {
 						></input>
 					</label>
 					<br></br>
-					<label>
-						<h4>
+					<label className="textAreaFormLabel">
+						<h4 className="tasksHeader">
 							<u>Tasks:</u>
 						</h4>
 						<textarea

@@ -8,12 +8,12 @@ export default class Education extends React.Component {
 		this.state = {
 			educationData: [
 				{
-					institutionName: "",
-					major: "",
-					minor: "",
-					degreeType: "",
-					gpa: "",
-					yearOfGraduation: "",
+					institutionName: "State University",
+					major: "Computer Science",
+					minor: "Mathematics",
+					degreeType: "Bachelor's",
+					gpa: "3.75",
+					yearOfGraduation: "2020",
 				},
 			],
 			formView: false,
