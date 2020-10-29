@@ -6,11 +6,11 @@ export default class GeneralInformation extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: "Scott Pribe",
+			name: "John Smith",
 			phone: "555-555-5555",
-			email: "scottpribe@gmail.com",
-			github: "https://github.com/ScotttP",
-			linkedIn: "https://www.linkedin.com/in/scottpribe/",
+			email: "johnsmith@gmail.com",
+			github: "https://github.com/johnsmith",
+			linkedIn: "https://www.linkedin.com/in/johnsmith/",
 			formView: false,
 		};
 		this.handleChange = this.handleChange.bind(this);
