@@ -72,13 +72,6 @@ export default class GeneralInformation extends React.Component {
 		if (this.state.formView === false) {
 			return (
 				<aside id="generalInfoContainer">
-					<img
-						id="profilePicture"
-						src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-						alt="profilePic"
-						width="200"
-						height="200"
-					></img>
 					<div id="headerContainer">
 						<h1 id="nameHeader">{this.state.name}</h1>
 						<h3 id="phoneHeader">{this.state.phone}</h3>
@@ -95,13 +88,6 @@ export default class GeneralInformation extends React.Component {
 		} else {
 			return (
 				<aside id="generalInfoContainer">
-					<img
-						id="profilePicture"
-						src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-						alt="profilePic"
-						width="200"
-						height="200"
-					></img>
 					<div id="headerContainer">
 						<form id="generalInfoForm" onSubmit={this.handleSubmit}>
 							<label>

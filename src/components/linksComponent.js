@@ -33,14 +33,14 @@ export default function LinksInformation(props) {
 						alt="Email"
 					/>
 				</a>
-				<a onClick={props.print}>
+				<button onClick={props.print} id="printButton">
 					<img
 						className="icons"
 						id="printIcon"
 						src="https://img.icons8.com/windows/36/000000/print-file.png"
 						alt="Print"
 					></img>
-				</a>
+				</button>
 			</ul>
 		</div>
 	);
