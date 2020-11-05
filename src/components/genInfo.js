@@ -2,6 +2,8 @@ import React from "react";
 import EditAndSaveButton from "./editAndSaveButton";
 import LinksInformation from "./linksComponent";
 
+//THIS IS A NEW BRANCH TEST
+
 export default class GeneralInformation extends React.Component {
 	constructor(props) {
 		super(props);
