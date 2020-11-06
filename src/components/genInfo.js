@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import EditAndSaveButton from "./editAndSaveButton";
 import LinksInformation from "./linksComponent";
 
@@ -25,20 +25,11 @@ export default function GeneralInformation() {
 		window.print();
 	}
 	function handleSubmit(e) {
-		// setGenInfo({
-		// 	name: genInfo.name,
-		// 	phone: genInfo.phone,
-		// 	email: genInfo.email,
-		// 	github: genInfo.github,
-		// 	linkedIn: genInfo.linkedIn,
-		// 	formView: genInfo.formView,
-		// });
-		console.log(genInfo.name);
-		// localStorage.setItem("name", JSON.stringify(genInfo.name));
-		// localStorage.setItem("phone", JSON.stringify(genInfo.phone));
-		// localStorage.setItem("email", JSON.stringify(genInfo.email));
-		// localStorage.setItem("github", JSON.stringify(genInfo.github));
-		// localStorage.setItem("linkedIn", JSON.stringify(genInfo.linkedIn));
+		localStorage.setItem("name", JSON.stringify(genInfo.name));
+		localStorage.setItem("phone", JSON.stringify(genInfo.phone));
+		localStorage.setItem("email", JSON.stringify(genInfo.email));
+		localStorage.setItem("github", JSON.stringify(genInfo.github));
+		localStorage.setItem("linkedIn", JSON.stringify(genInfo.linkedIn));
 		e.preventDefault();
 	}
 
@@ -47,27 +38,27 @@ export default function GeneralInformation() {
 		toggleView();
 		handleSubmit(e);
 	}
-	function componentDidMount() {
-		let name = JSON.parse(localStorage.getItem("name"));
-		let phone = JSON.parse(localStorage.getItem("phone"));
-		let email = JSON.parse(localStorage.getItem("email"));
-		let github = JSON.parse(localStorage.getItem("github"));
-		let linkedIn = JSON.parse(localStorage.getItem("linkedIn"));
-		if (
-			name === null ||
-			phone === null ||
-			email === null ||
-			github === null ||
-			linkedIn === null
-		) {
-			name = genInfo.name;
-			phone = genInfo.phone;
-			email = genInfo.email;
-			github = genInfo.github;
-			linkedIn = genInfo.linkedIn;
-		}
-		setGenInfo({ name, phone, email, github, linkedIn });
-	}
+	useEffect(() => {
+		setGenInfo({
+			name: JSON.parse(localStorage.getItem("name")),
+		});
+
+		// if (
+		// 	genInfo.name === null ||
+		// 	genInfo.phone === null ||
+		// 	genInfo.email === null ||
+		// 	genInfo.github === null ||
+		// 	genInfo.linkedIn === null
+		// ) {
+		// 	console.log("this is null");
+		// 	phone = genInfo.phone;
+		// 	email = genInfo.email;
+		// 	github = genInfo.github;
+		// 	linkedIn = genInfo.linkedIn;
+		// }
+
+		console.log(genInfo.name);
+	}, [genInfo.name]);
 
 	if (genInfo.formView === false) {
 		return (

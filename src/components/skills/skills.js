@@ -90,7 +90,7 @@ export default class Skills extends React.Component {
 				handleChange={this.handleChange}
 			/>
 		));
-		console.log(this.state.skillsData);
+
 		return (
 			<main id="skillsFormContainer">
 				<h1 className="sectionHeaders">
