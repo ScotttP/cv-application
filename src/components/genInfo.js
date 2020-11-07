@@ -1,36 +1,50 @@
 import React, { useState, useEffect } from "react";
 import EditAndSaveButton from "./editAndSaveButton";
 import LinksInformation from "./linksComponent";
+import useLocalStorage from "./localStorage";
 
 export default function GeneralInformation() {
-	const [genInfo, setGenInfo] = useState({
+	const [name, setName] = useState(
+		() => {
+			if (!localStorage.name) {
+				return "John Smith";
+			} else {
+				return JSON.parse(localStorage.getItem("name"));
+			}
+		}
 		//make this a custom hook? https://blog.bitsrc.io/writing-your-own-custom-hooks-4fbcf77e112e
-		name: JSON.parse(localStorage.getItem("name")),
-		phone: "555-555-5555",
-		email: "johnsmith@gmail.com",
-		github: "https://github.com/johnsmith",
-		linkedIn: "https://www.linkedin.com/in/johnsmith/",
-		formView: false,
-	});
+	);
+	const [phone, setPhone] = useState(null);
+	const [email, setEmail] = useState(null);
+	const [github, setGitHub] = useState(null);
+	const [linkedIn, setLinkedIn] = useState(null);
+	const [formView, setFormView] = useState(false);
 	function handleChange(e) {
-		setGenInfo({
-			[e.target.name]: e.target.value,
-		});
+		if (e.target.name === "name") {
+			setName(e.target.value);
+		} else if (e.target.name === "phone") {
+			setPhone(e.target.value);
+		} else if (e.target.name === "email") {
+			setEmail(e.target.value);
+		} else if (e.target.name === "linkedIn") {
+			setLinkedIn(e.target.value);
+		} else if (e.target.name === "gitHub") {
+			setGitHub(e.target.value);
+		}
 	}
 	function toggleView() {
-		setGenInfo({
-			formView: !genInfo.formView,
-		});
+		setFormView(!formView);
 	}
 	function print() {
 		window.print();
 	}
 	function handleSubmit(e) {
-		localStorage.setItem("name", JSON.stringify(genInfo.name));
-		localStorage.setItem("phone", JSON.stringify(genInfo.phone));
-		localStorage.setItem("email", JSON.stringify(genInfo.email));
-		localStorage.setItem("github", JSON.stringify(genInfo.github));
-		localStorage.setItem("linkedIn", JSON.stringify(genInfo.linkedIn));
+		console.log("fire off localstorage");
+		localStorage.setItem("name", JSON.stringify(name));
+		localStorage.setItem("phone", JSON.stringify(phone));
+		localStorage.setItem("email", JSON.stringify(email));
+		localStorage.setItem("github", JSON.stringify(github));
+		localStorage.setItem("linkedIn", JSON.stringify(linkedIn));
 		e.preventDefault();
 	}
 
@@ -39,19 +53,38 @@ export default function GeneralInformation() {
 		toggleView();
 		handleSubmit(e);
 	}
-	useEffect(() => {});
+	useEffect(() => {
+		// if (localStorage.length === 0) {
+		// 	setName("John Smith");
+		// 	setPhone("555-555-5555");
+		// 	setEmail("johnsmith@gmail.com");
+		// 	setGitHub("https://github.com/johnsmith");
+		// 	setLinkedIn("https://www.linkedin.com/in/johnsmith/");
+		// } else {
+		// 	setName(JSON.parse(localStorage.getItem("name")));
+		// 	setPhone(JSON.parse(localStorage.getItem("phone")));
+		// 	setEmail(JSON.parse(localStorage.getItem("email")));
+		// 	setGitHub(JSON.parse(localStorage.getItem("github")));
+		// 	setLinkedIn(JSON.parse(localStorage.getItem("linkedIn")));
+		// }
+	});
 
-	if (genInfo.formView === false) {
+	if (formView === false) {
 		return (
 			<aside id="generalInfoContainer">
 				<div id="headerContainer">
-					<h1 id="nameHeader">{genInfo.name}</h1>
-					<h3 id="phoneHeader">{genInfo.phone}</h3>
+					<h1 id="nameHeader">{name}</h1>
+					<h3 id="phoneHeader">{phone}</h3>
 				</div>
-				<LinksInformation urls={genInfo} print={print} />
+				<LinksInformation
+					email={email}
+					github={github}
+					linkedIn={linkedIn}
+					print={print}
+				/>
 				<EditAndSaveButton
 					section="generalInfo"
-					view={genInfo.formView}
+					view={formView}
 					toggleView={toggleView}
 					wrapperFunction={wrapperFunction}
 				/>
@@ -69,7 +102,7 @@ export default function GeneralInformation() {
 								id="nameInput"
 								name="name"
 								type="text"
-								value={genInfo.name}
+								value={name}
 								onChange={(e) => handleChange(e)}
 								placeholder="John Smith"
 							></input>
@@ -82,7 +115,7 @@ export default function GeneralInformation() {
 								id="phoneInput"
 								name="phone"
 								type="text"
-								value={genInfo.phone}
+								value={phone}
 								onChange={(e) => handleChange(e)}
 								placeholder="555-555-5555"
 							></input>
@@ -95,7 +128,7 @@ export default function GeneralInformation() {
 								id="emailInput"
 								name="email"
 								type="text"
-								value={genInfo.email}
+								value={email}
 								onChange={(e) => handleChange(e)}
 								placeholder="JohnSmith@gmail.com"
 							></input>
@@ -108,7 +141,7 @@ export default function GeneralInformation() {
 								id="gitHubInput"
 								name="github"
 								type="text"
-								value={genInfo.github}
+								value={github}
 								onChange={(e) => handleChange(e)}
 								placeholder="https://..."
 							></input>
@@ -121,7 +154,7 @@ export default function GeneralInformation() {
 								id="linkedInInput"
 								name="linkedIn "
 								type="text"
-								value={genInfo.linkedIn}
+								value={linkedIn}
 								onChange={(e) => handleChange(e)}
 								placeholder="https://..."
 							></input>
@@ -129,7 +162,7 @@ export default function GeneralInformation() {
 						<br></br>
 						<EditAndSaveButton
 							section="generalInfo"
-							view={genInfo.formView}
+							view={formView}
 							toggleView={toggleView}
 							wrapperFunction={wrapperFunction}
 						/>

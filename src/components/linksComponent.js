@@ -4,7 +4,7 @@ export default function LinksInformation(props) {
 	return (
 		<div id="professionalContactContainer">
 			<ul id="listContainer">
-				<a href={props.urls.linkedIn} rel="noopener noreferrer" target="_blank">
+				<a href={props.linkedIn} rel="noopener noreferrer" target="_blank">
 					<img
 						className="icons"
 						id="linkedInIcon"
@@ -13,7 +13,7 @@ export default function LinksInformation(props) {
 					></img>
 				</a>
 
-				<a href={props.urls.github} rel="noopener noreferrer" target="_blank">
+				<a href={props.github} rel="noopener noreferrer" target="_blank">
 					<img
 						className="icons"
 						id="gitHubIcon"
@@ -22,7 +22,7 @@ export default function LinksInformation(props) {
 					/>
 				</a>
 				<a
-					href={`mailto: ${props.urls.email}?subject=Interested In Your Resumé`}
+					href={`mailto: ${props.email}?subject=Interested In Your Resumé`}
 					rel="noopener noreferrer"
 					target="_blank"
 				>
