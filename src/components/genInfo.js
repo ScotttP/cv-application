@@ -4,7 +4,8 @@ import LinksInformation from "./linksComponent";
 
 export default function GeneralInformation() {
 	const [genInfo, setGenInfo] = useState({
-		name: "John Smith",
+		//make this a custom hook? https://blog.bitsrc.io/writing-your-own-custom-hooks-4fbcf77e112e
+		name: JSON.parse(localStorage.getItem("name")),
 		phone: "555-555-5555",
 		email: "johnsmith@gmail.com",
 		github: "https://github.com/johnsmith",
@@ -38,27 +39,7 @@ export default function GeneralInformation() {
 		toggleView();
 		handleSubmit(e);
 	}
-	useEffect(() => {
-		setGenInfo({
-			name: JSON.parse(localStorage.getItem("name")),
-		});
-
-		// if (
-		// 	genInfo.name === null ||
-		// 	genInfo.phone === null ||
-		// 	genInfo.email === null ||
-		// 	genInfo.github === null ||
-		// 	genInfo.linkedIn === null
-		// ) {
-		// 	console.log("this is null");
-		// 	phone = genInfo.phone;
-		// 	email = genInfo.email;
-		// 	github = genInfo.github;
-		// 	linkedIn = genInfo.linkedIn;
-		// }
-
-		console.log(genInfo.name);
-	}, [genInfo.name]);
+	useEffect(() => {});
 
 	if (genInfo.formView === false) {
 		return (
@@ -80,7 +61,7 @@ export default function GeneralInformation() {
 		return (
 			<aside id="generalInfoContainer">
 				<div id="headerContainer">
-					<form id="generalInfoForm" onSubmit={handleSubmit}>
+					<form id="generalInfoForm" onSubmit={(e) => handleSubmit(e)}>
 						<label>
 							<h4>Name:</h4>
 							<input

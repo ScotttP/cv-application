@@ -7,7 +7,7 @@ export default function EditAndSaveButton(props) {
 				id={props.section + "EditButton"}
 				type="button"
 				value="Edit"
-				onClick={props.wrapperFunction}
+				onClick={props.toggleView}
 			></input>
 		);
 	} else if (props.section === "generalInfo") {
