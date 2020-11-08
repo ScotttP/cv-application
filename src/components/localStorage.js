@@ -1,19 +1,33 @@
-import { useState, useEffect } from "react";
-export default function useLocalStorage(requestedItem, defaultValue) {
-	const [state, setState] = useState(() => {
-		let value;
-		try {
-			value = JSON.parse(
-				window.localStorage.getItem(requestedItem) || String(defaultValue)
-			);
-		} catch (e) {
-			value = defaultValue;
-			console.log("error occured.");
+export default function gettingLocalStorage(targetName) {
+	if (targetName === "name") {
+		if (!localStorage.name) {
+			return "John Smith";
 		}
-		return value;
-	});
-	useEffect(() => {
-		window.localStorage.setItem(requestedItem, state);
-	}, [state]);
-	return [state, setState];
+		return JSON.parse(localStorage.getItem(targetName));
+	}
+	if (targetName === "phone") {
+		if (!localStorage.phone) {
+			return "555-555-5555";
+		}
+		return JSON.parse(localStorage.getItem(targetName));
+	}
+	if (targetName === "email") {
+		if (!localStorage.email) {
+			return "johnsmith@gmail.com";
+		}
+		return JSON.parse(localStorage.getItem(targetName));
+	}
+	if (targetName === "github") {
+		if (!localStorage.github) {
+			return "https://github.com/JohnSmith/";
+		} else {
+			return JSON.parse(localStorage.getItem(targetName));
+		}
+	}
+	if (targetName === "linkedIn") {
+		if (!localStorage.linkedIn) {
+			return "https://www.linkedin.com/in/johnsmith/";
+		}
+		return JSON.parse(localStorage.getItem("linkedIn"));
+	}
 }

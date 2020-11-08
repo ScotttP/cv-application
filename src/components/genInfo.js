@@ -1,73 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import EditAndSaveButton from "./editAndSaveButton";
 import LinksInformation from "./linksComponent";
-import useLocalStorage from "./localStorage";
+import gettingLocalStorage from "./localStorage";
 
 export default function GeneralInformation() {
-	const [name, setName] = useState(
-		() => {
-			if (!localStorage.name) {
-				return "John Smith";
-			} else {
-				return JSON.parse(localStorage.getItem("name"));
-			}
-		}
-		//make this a custom hook? https://blog.bitsrc.io/writing-your-own-custom-hooks-4fbcf77e112e
-	);
-	const [phone, setPhone] = useState(null);
-	const [email, setEmail] = useState(null);
-	const [github, setGitHub] = useState(null);
-	const [linkedIn, setLinkedIn] = useState(null);
+	const [name, setName] = useState(gettingLocalStorage("name"));
+	const [phone, setPhone] = useState(gettingLocalStorage("phone"));
+	const [email, setEmail] = useState(gettingLocalStorage("email"));
+	const [github, setGitHub] = useState(gettingLocalStorage("github"));
+	const [linkedIn, setLinkedIn] = useState(gettingLocalStorage("linkedIn"));
 	const [formView, setFormView] = useState(false);
-	function handleChange(e) {
-		if (e.target.name === "name") {
-			setName(e.target.value);
-		} else if (e.target.name === "phone") {
-			setPhone(e.target.value);
-		} else if (e.target.name === "email") {
-			setEmail(e.target.value);
-		} else if (e.target.name === "linkedIn") {
-			setLinkedIn(e.target.value);
-		} else if (e.target.name === "gitHub") {
-			setGitHub(e.target.value);
-		}
-	}
-	function toggleView() {
-		setFormView(!formView);
-	}
-	function print() {
-		window.print();
-	}
+
 	function handleSubmit(e) {
-		console.log("fire off localstorage");
 		localStorage.setItem("name", JSON.stringify(name));
 		localStorage.setItem("phone", JSON.stringify(phone));
 		localStorage.setItem("email", JSON.stringify(email));
 		localStorage.setItem("github", JSON.stringify(github));
 		localStorage.setItem("linkedIn", JSON.stringify(linkedIn));
+
 		e.preventDefault();
 	}
 
 	function wrapperFunction(e) {
 		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
-		toggleView();
+		setFormView(!formView);
 		handleSubmit(e);
 	}
-	useEffect(() => {
-		// if (localStorage.length === 0) {
-		// 	setName("John Smith");
-		// 	setPhone("555-555-5555");
-		// 	setEmail("johnsmith@gmail.com");
-		// 	setGitHub("https://github.com/johnsmith");
-		// 	setLinkedIn("https://www.linkedin.com/in/johnsmith/");
-		// } else {
-		// 	setName(JSON.parse(localStorage.getItem("name")));
-		// 	setPhone(JSON.parse(localStorage.getItem("phone")));
-		// 	setEmail(JSON.parse(localStorage.getItem("email")));
-		// 	setGitHub(JSON.parse(localStorage.getItem("github")));
-		// 	setLinkedIn(JSON.parse(localStorage.getItem("linkedIn")));
-		// }
-	});
 
 	if (formView === false) {
 		return (
@@ -80,12 +38,12 @@ export default function GeneralInformation() {
 					email={email}
 					github={github}
 					linkedIn={linkedIn}
-					print={print}
+					print={() => window.print()}
 				/>
 				<EditAndSaveButton
 					section="generalInfo"
 					view={formView}
-					toggleView={toggleView}
+					toggleView={() => setFormView(!formView)}
 					wrapperFunction={wrapperFunction}
 				/>
 			</aside>
@@ -103,7 +61,7 @@ export default function GeneralInformation() {
 								name="name"
 								type="text"
 								value={name}
-								onChange={(e) => handleChange(e)}
+								onChange={(e) => setName(e.target.value)}
 								placeholder="John Smith"
 							></input>
 						</label>
@@ -116,7 +74,7 @@ export default function GeneralInformation() {
 								name="phone"
 								type="text"
 								value={phone}
-								onChange={(e) => handleChange(e)}
+								onChange={(e) => setPhone(e.target.value)}
 								placeholder="555-555-5555"
 							></input>
 						</label>
@@ -129,7 +87,7 @@ export default function GeneralInformation() {
 								name="email"
 								type="text"
 								value={email}
-								onChange={(e) => handleChange(e)}
+								onChange={(e) => setEmail(e.target.value)}
 								placeholder="JohnSmith@gmail.com"
 							></input>
 						</label>
@@ -142,7 +100,7 @@ export default function GeneralInformation() {
 								name="github"
 								type="text"
 								value={github}
-								onChange={(e) => handleChange(e)}
+								onChange={(e) => setGitHub(e.target.value)}
 								placeholder="https://..."
 							></input>
 						</label>
@@ -155,7 +113,7 @@ export default function GeneralInformation() {
 								name="linkedIn "
 								type="text"
 								value={linkedIn}
-								onChange={(e) => handleChange(e)}
+								onChange={(e) => setLinkedIn(e.target.value)}
 								placeholder="https://..."
 							></input>
 						</label>
@@ -163,7 +121,7 @@ export default function GeneralInformation() {
 						<EditAndSaveButton
 							section="generalInfo"
 							view={formView}
-							toggleView={toggleView}
+							toggleView={() => setFormView(!formView)}
 							wrapperFunction={wrapperFunction}
 						/>
 					</form>
