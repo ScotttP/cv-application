@@ -30,4 +30,24 @@ export default function gettingLocalStorage(targetName) {
 		}
 		return JSON.parse(localStorage.getItem("linkedIn"));
 	}
+	if (targetName === "experienceData") {
+		if (!localStorage.experienceData) {
+			return {
+				experienceDataArray: [
+					{
+						companyName: "ABC Company",
+						location: "New York City, NY",
+						roleTitle: "Developer",
+						startDate: "2018-10-15",
+						endDate: "2020-10-15",
+						tasks: `
+		--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut sagittis lectus.  
+		--Suspendisse eget orci id nunc ullamcorper placerat sed nec diam. 
+		--Aenean risus ligula, vulputate id nunc ut, sagittis iaculis ex. In vel tincidunt nisi. `,
+					},
+				],
+			};
+		}
+		return JSON.parse(localStorage.getItem("experienceData"));
+	}
 }

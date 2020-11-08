@@ -1,38 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import ExperienceFormAndDisplay from "./experienceFormAndDisplay";
 import EditAndSaveButton from "../editAndSaveButton";
+import gettingLocalStorage from "../localStorage";
 
-export default class Experience extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			experienceData: [
-				{
-					companyName: "ABC Company",
-					location: "New York City, NY",
-					roleTitle: "Developer",
-					startDate: "2018-10-15",
-					endDate: "2020-10-15",
-					tasks: `
---Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut sagittis lectus.  
---Suspendisse eget orci id nunc ullamcorper placerat sed nec diam. 
---Aenean risus ligula, vulputate id nunc ut, sagittis iaculis ex. In vel tincidunt nisi. `,
-				},
-			],
-			formView: false,
-		};
-		this.addJob = this.addJob.bind(this);
-		this.toggleView = this.toggleView.bind(this);
-		this.handleChange = this.handleChange.bind(this);
+export default function Experience() {
+	const [formView, setFormView] = useState(false);
+	const [experienceData, setExperienceData] = useState(
+		gettingLocalStorage("experienceData")
+	);
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.wrapperFunction = this.wrapperFunction.bind(this);
-	}
-
-	addJob() {
-		this.setState({
-			experienceData: [
-				...this.state.experienceData,
+	function addJob() {
+		setExperienceData({
+			experienceDataArray: [
+				...experienceData,
 				{
 					companyName: "",
 					location: "",
@@ -44,78 +24,63 @@ export default class Experience extends React.Component {
 			],
 		});
 	}
-
-	deleteJob(e) {
+	function deleteJob(e) {
 		const index = Number(e.target.id.substring(e.target.id.length - 1, 17));
-		const copyFormArray = Object.assign([], this.state.experienceData);
+		const copyFormArray = Object.assign([], experienceData.experienceDataArray);
 		copyFormArray.splice(index, 1);
-		this.setState({
-			experienceData: copyFormArray,
+		setExperienceData({
+			experienceDataArray: copyFormArray,
 		});
 	}
-	handleChange(e) {
+	function handleChange(e) {
 		const index = Number(e.target.id.substring(e.target.id.length - 1, 12));
-		const copyFormArray = JSON.parse(JSON.stringify(this.state.experienceData));
+		const copyFormArray = JSON.parse(
+			JSON.stringify(experienceData.experienceDataArray)
+		);
 		copyFormArray[index][e.target.name] = e.target.value;
-		this.setState({
-			experienceData: copyFormArray,
+		setExperienceData({
+			experienceDataArray: copyFormArray,
 		});
 	}
 
-	toggleView() {
-		this.setState({
-			formView: !this.state.formView,
-		});
-	}
-
-	handleSubmit(e) {
-		const { experienceData } = this.state;
+	function handleSubmit(e) {
+		setExperienceData(experienceData);
 		localStorage.setItem("experienceData", JSON.stringify(experienceData));
 		e.preventDefault();
 	}
-	wrapperFunction(e) {
+
+	function wrapperFunction(e) {
 		//when the save button is clicked, the toggleView function and submit button fire off so we can have 2 functions occur on 1 click
-		this.toggleView();
-		this.handleSubmit(e);
+		setFormView(!formView);
+		handleSubmit(e);
 	}
+	const jobRendering = experienceData.experienceDataArray.map((job, i) => (
+		<ExperienceFormAndDisplay
+			id={"formAtIndex" + i}
+			index={i}
+			key={job.toString() + i}
+			view={formView}
+			deleteJobOnClick={(e) => deleteJob(e)}
+			data={experienceData.experienceDataArray[i]}
+			handleChange={(e) => handleChange(e)}
+		/>
+	));
 
-	componentDidMount() {
-		let experienceData = JSON.parse(localStorage.getItem("experienceData"));
-		if (experienceData === null) {
-			experienceData = this.state.experienceData;
-		}
-		this.setState({ experienceData });
-	}
-
-	render() {
-		const jobRendering = this.state.experienceData.map((job, i) => (
-			<ExperienceFormAndDisplay
-				id={"formAtIndex" + i}
-				index={i}
-				key={job.toString() + i}
-				view={this.state.formView}
-				deleteJobOnClick={(e) => this.deleteJob(e)}
-				data={this.state.experienceData[i]}
-				handleChange={this.handleChange}
-			/>
-		));
-		return (
-			<main id="experienceFormContainer">
-				<h1 className="sectionHeaders">
-					<u>Experience</u>
-				</h1>
-
-				<form id="experienceForm" onSubmit={this.handleSubmit}>
-					{jobRendering}
-					<EditAndSaveButton
-						section="experience"
-						view={this.state.formView}
-						toggleView={this.toggleView}
-						addSection={this.addJob}
-						wrapperFunction={this.wrapperFunction}
-					/>
-				</form>
-			</main>
-		);
-	}
+	return (
+		<main id="experienceFormContainer">
+			<h1 className="sectionHeaders">
+				<u>Experience</u>
+			</h1>
+			{jobRendering}
+			<form id="experienceForm" onSubmit={handleSubmit}>
+				<EditAndSaveButton
+					section="experience"
+					view={formView}
+					toggleView={() => setFormView(!formView)}
+					addSection={addJob}
+					wrapperFunction={wrapperFunction}
+				/>
+			</form>
+		</main>
+	);
 }
