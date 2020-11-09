@@ -28,7 +28,7 @@ export default function gettingLocalStorage(targetName) {
 		if (!localStorage.linkedIn) {
 			return "https://www.linkedin.com/in/johnsmith/";
 		}
-		return JSON.parse(localStorage.getItem("linkedIn"));
+		return JSON.parse(localStorage.getItem(targetName));
 	}
 	if (targetName === "experienceData") {
 		if (!localStorage.experienceData) {
@@ -48,6 +48,44 @@ export default function gettingLocalStorage(targetName) {
 				],
 			};
 		}
-		return JSON.parse(localStorage.getItem("experienceData"));
+		return JSON.parse(localStorage.getItem(targetName));
+	}
+	if (targetName === "educationData") {
+		if (!localStorage.educationData) {
+			return {
+				educationDataArray: [
+					{
+						institutionName: "State University",
+						major: "Computer Science",
+						minor: "Mathematics",
+						degreeType: "Bachelor's",
+						gpa: "3.75",
+						yearOfGraduation: "2020",
+					},
+				],
+			};
+		}
+		return JSON.parse(localStorage.getItem(targetName));
+	}
+	if (targetName === "skillsData") {
+		if (!localStorage.skillsData) {
+			return {
+				skillsDataArray: [
+					{
+						skill: "HTML",
+					},
+					{
+						skill: "CSS",
+					},
+					{
+						skill: "Javascript",
+					},
+					{
+						skill: "React",
+					},
+				],
+			};
+		}
+		return JSON.parse(localStorage.getItem(targetName));
 	}
 }
